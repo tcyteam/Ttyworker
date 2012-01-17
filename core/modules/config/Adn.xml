@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<module name="Adn" auteur="Yannick Martins" version="0.1.9">
+    <droit name="add">Ajouter un utilisateur</droit>
+    <droit name="del">Supprimer un utilisateur</droit>
+    <droit name="adddroit">Ajouter un droit</droit>
+    <droit name="viewgroup">Voir les groupes</droit>
+    <droit name="viewmeber">View member</droit>
+    <droit name="viewdroit">Voir les droits</droit>
+    <droit name="updatemember">Mis à jour d'un utilisateur</droit>
+    <droit name="updategroup">Mis à jour d'un groupe</droit>
+    <droit name="profil">Voir le profil de l'utilisateur</droit>
+    <droit name="administration">Administration</droit>
+    <droit name="connect">Connect</droit>
+    <droit name="disconnect">Deconnexion</droit>
+    <droit name="test">Page de tests</droit>
+</module>

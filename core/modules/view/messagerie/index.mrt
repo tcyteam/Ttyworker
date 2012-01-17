@@ -1,0 +1,36 @@
+﻿<?php
+self::$com['messagecount'] = 0;
+if(!empty(self::$com['mess_view_all']))
+{
+?>	
+<table class="lien_align">
+<tr>
+	<th>All</th>
+	<th>Expediteur</th>
+	<th>Objet</th>
+	<th>Date</th>
+</tr>
+<?php		
+while ($nb = self::$com['mess_view_all']->fetch(PDO::FETCH_OBJ))
+{
+    $this->helper->ErrorDisplay('<tr>');
+	       $this->helper->ErrorDisplay('<td>');
+                  $this->helper->CheckBox($nb->id,$nb->id,false);
+                  $this->helper->AddValue(0,'');
+		   $this->helper->ErrorDisplay('</td>');
+		   $this->helper->ErrorDisplay('<td>');
+                  $this->helper->Link($this->ReelDir().'messagerie/viewmessage/'.$nb->id,ucfirst($nb->id_exp));
+	       $this->helper->ErrorDisplay('</td>');
+	       $this->helper->ErrorDisplay('<td>');
+                  $this->helper->Link($this->ReelDir().'messagerie/viewmessage/'.$nb->id,ucfirst($nb->objet));
+	       $this->helper->ErrorDisplay('</td>');
+	       $this->helper->ErrorDisplay('<td>');
+                  $this->helper->Link($this->ReelDir().'messagerie/viewmessage/'.$nb->id,$nb->date);
+	       $this->helper->ErrorDisplay('</td>');
+	$this->helper->ErrorDisplay('</tr>');
+}
+self::$com['mess_view_all']->closeCursor();
+}
+$this->helper->Rend();
+?>
+</table>

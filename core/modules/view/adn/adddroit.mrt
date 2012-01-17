@@ -1,0 +1,19 @@
+﻿<div id="droit">
+<?php
+if(!isset($_POST['adddroit']))
+{
+$this->helper->Form('ids','adddroit','ids');
+$this->helper->LineEdit('nom')->SetLabel('Titre de la permission : ');
+$this->helper->LineEdit('nom_aff')->SetLabel('Nom de la permission: ');
+$this->helper->LineEdit('module')->SetLabel('Nom du module : ');
+$this->helper->TextArea('explication')->SetLabel('Explication de la permission: ');
+$this->helper->ErrorDisplay(self::$com['resulta'].'<br>');
+$this->helper->Submit('adddroit','Ajouter une permission','a');
+$this->helper->Render();
+}
+elseif(isset($_POST['adddroit']))
+{
+$this->helper->TextBox('Message',self::$com['resulta']);	
+}
+?>
+</div>

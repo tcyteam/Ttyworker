@@ -1,0 +1,8 @@
+<?php
+$this->News();
+?>
+<div style="clear: both;">&nbsp;</div>
+<!-- end #content -->
+		
+
+

@@ -1,0 +1,23 @@
+#commentaire
+{
+	margin:auto;
+	width:60%;
+	margin-top:10%;
+	color:#3c5281;
+}
+#comment-name
+{
+	height:30px;
+	margin-bottom:10px;
+}
+#comment-body
+{
+	height:30px;
+	margin-bottom:10px;
+	background-color:#3c5281;
+	color:white;
+}
+#comment-page
+{
+	height:30px;
+}

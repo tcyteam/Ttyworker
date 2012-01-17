@@ -1,0 +1,17 @@
+<div id="adn">
+<div id="adn_index">
+<h3><a href="#">Signaler un bug</a></h3>
+<div>
+<p>
+<?php
+$this->helper->Form('form2',ReelDir().'adn/bugreport');
+$this->helper->LineEdit('lien')->SetLabel('Lien du bug: *');
+$this->helper->LineEdit('email')->SetLabel('Email : *');
+$this->helper->TextArea('message')->SetLabel('Message / Breicht: *');
+$this->helper->ErrorDisplay('<br>');
+$this->helper->Submit('envoyer','Envoyer');
+$this->helper->Render();
+?>
+</div>
+</div>
+</div>

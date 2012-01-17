@@ -1,0 +1,443 @@
+#adn
+{
+    width:80%;
+    height:250px;
+    margin:auto;
+    padding:10px;
+    color:#3F4C6B;
+}
+#adn input[type="text"],input[type="password"]
+{
+    background-image:url('<?php echo FATHER?>base/images/input.png');
+    background-repeat:no-repeat;
+    width:148px;
+    height:23px;
+    float:right;
+    margin-bottom:5px;
+}
+#adn textarea
+{
+    background-image:url('<?php echo FATHER?>base/images/input.png');
+    background-repeat:no-repeat;
+    width:148px;
+    height:200px;
+    float:right;
+    margin-bottom:5px;
+}
+#adn input[type="submit"]
+{
+    float:right;
+    margin-top:15px;
+}
+#adn label 
+{
+    margin-top:5px;	
+    margin-bottom:5px;
+}
+#adn a
+{
+    text-decoration:none; 
+    color:#356AA0;
+}
+#adn a:hover
+{
+    text-decoration:underline; 
+}
+#adnAdd
+{
+    color:#356AA0;
+    width:80%;
+    padding:25px;
+    color:white;
+    margin-top:10px;
+    margin-bottom:10px:
+}
+
+/* adn_group */
+
+
+.add_group input[type="checkbox"]
+{
+    float:left;
+}
+.add_group
+{
+    width:60%;
+}
+
+/* adn_module */
+
+.adn_module {
+	float: right;
+	width: 250px;
+	height: 120px;
+	padding: 20px 0px 0px 0px;
+	background: #E2E2E2;
+	border-bottom: 4px solid #FFFFFF;
+}
+.adn_module input[type="password"]
+{
+	float:right;
+	margin-right:10px;
+	margin-top:2px;
+    width:127px;
+    height:18px;
+    border:1px #C0C0C0 solid;
+    font-family:Arial;
+    font-size:13px;
+    z-index:0
+}
+.adn_module input[type="text"]
+{
+	float:right;
+	margin-right:10px;
+    width:127px;
+    height:18px;
+    border:1px #C0C0C0 solid;
+    font-family:Arial;
+    font-size:13px;
+    z-index:0
+}
+.adn_module input[type="submit"]
+{  
+    float:right;
+    margin-left:30px;
+    margin-right:10px;
+    margin-top:15px;
+}
+.adn_module form label
+{  
+    margin:0;
+    padding:0;
+    width:72px;
+    height:16px;
+    text-align:left;
+    z-index:3;
+    float:left;
+    margin-left:10px;
+    margin-top:2px;
+}
+#inscription
+{
+    position:relative;
+    left:900px;
+    top:37px;
+    color:white;
+}
+#ins_password
+{
+    float:right;
+}
+#adnError
+{
+    width:250px;
+    height:50px;
+    position:absolute;
+    bottom:16%;
+    left:10%;
+}
+#adnErrorAdd
+{
+    background-color:#C9E5FB;
+    border:1px solid #C9E5FB;
+    height:10px;
+    width:30%;
+    position:absolute;
+    bottom:12%;
+    left:35%;
+    padding:20px;
+    margin:auto;
+    color:gray;
+    text-align:center;
+    font-size:20.8px;
+}
+#connect
+{
+    width:100%;
+    height:100%;
+} 
+#connect_menu
+{
+   margin:3px;
+   font-size:10.8px;
+} 
+#connect_menu.infp
+{
+   font-size:8px;
+} 
+#droit
+{
+    border:1px solid #C9E5FB;
+    width:80%;
+    height:280px;
+    padding:15px;
+    margin:auto;
+    color:#3F4C6B;
+}
+#group
+{
+    border:1px solid #C9E5FB;
+   margin:auto;
+   width:80%;
+}
+#viewgroup
+{
+    border:1px solid #C9E5FB;
+    width:70%;
+    padding:15px;
+    color:#3F4C6B;
+    margin:auto;
+    background-color:white;
+}
+#viewgroup input[type="submit"]
+{
+    margin-left:39.5%;
+}
+.sous_lien a
+{
+     font-size:12px;
+}         
+#viewdroit
+{
+    margin:auto;
+    border:1px solid #C9E5FB;
+    width:400px;
+    height:250px;
+    color:#3F4C6B;
+}
+#viewmember td,th
+{
+    border:0px;   
+} 
+#updatemember
+{
+    margin:auto;
+    font-size:12px;
+    width:70%;
+} 
+#updatemember input[type="text"],input[type="password"]
+{
+    background-image:url('<?php echo FATHER?>base/images/input.png');
+    background-repeat:no-repeat;
+    width:148px;
+    height:23px;
+    float:right;
+    margin-bottom:2px;
+}
+#updatemember input[type="submit"]
+{
+    float:left;
+    margin-top:20px;
+}
+#updatemember label 
+{
+    margin-top:10px;	
+}
+#updatemember select
+{
+	margin-top:10px;
+    float:right;	
+}
+#connectinfo
+{
+    margin:auto;
+    color:white;
+    font-size:10.5px;
+    width:200px;
+    height:310px;
+    margin-top:15px;
+} 
+#accordion
+{
+    margin:auto;
+    width:551px;
+    height:100%;
+}
+#accordion a
+{
+    color:#B02B2C;
+}
+#modif_group
+{
+    border:1px solid #C9E5FB;
+    width:70%;
+    padding:15px;
+    color:#3F4C6B;
+    margin:auto;
+    height:400px;
+} 
+#modif_group label{  
+    display:block;  
+    float:left;  
+    width:200px;  
+    text-align:left; 
+}
+#modif_group input[type="submit"]
+{
+   height:20px;
+   width:100%;
+   border:1px solid #3F4C6B;
+   color:#36393D;
+   background-color:#0e71b4;
+   float:right;
+} 
+#modif_group input[type="text"]
+{
+   height:20px;
+   width:100%;
+   float:right;
+}  
+#modif_group select
+{
+   height:20px;
+   width:100%;
+   float:right;
+}
+
+
+
+.new_pass
+{
+    width:70%;
+    margin:auto;
+}    
+.new_pass input
+{
+    margin-left:10px;
+    margin-bottom:5px;
+}   
+.invalidInput, .error{  
+        color:#8a1f11;  
+        background-color:#fbe3e4;  
+}  
+.error,.notice{  
+        padding:0.5em;  
+        margin:0.5em;  
+}  
+.error{  
+    border:2px solid #8a1f11;  
+    display:none;  
+}  
+.notice {  
+    background-color:#FFF6BF;  
+    color:#514721;  
+    border:2px solid #FFD324;  
+    display:none;  
+}
+
+
+
+.search
+{
+	margin-top:15px;
+	border:1px solid white;
+	width:95%;
+	height:150px;
+}
+.search h2
+{
+	background-color: #c54b40;
+	width:85%;
+	margin:auto;
+	margin-bottom:25px;
+	text-align:center;
+}
+.search input[type="submit"]
+{
+	margin-top:12px;
+	display:block;
+    float:right;
+}
+.search2
+{
+	margin-top:15px;
+	border:1px solid white;
+	width:95%;
+	height:160px;
+}
+.search2 h2
+{
+	background-color: #c54b40;
+	width:85%;
+	margin:auto;
+	margin-bottom:25px;
+	text-align:center;
+}
+.search2 input[type="submit"]
+{
+	margin-top:12px;
+	margin-right:36%;
+    width:60%;
+}
+#search3
+{
+	margin-top:15px;
+	border:1px solid white;
+	width:95%;
+	height:160px;
+}
+#search3 h2
+{
+	background-color: #c54b40;
+	width:85%;
+	margin:auto;
+	margin-bottom:25px;
+	text-align:center;
+}
+#search3 input[type="submit"]
+{
+	width:90%;
+	margin:auto;
+	margin-bottom:15px;
+	margin-right:5%;
+	margin-left:5%;
+  
+}
+#faq
+{
+	position:absolute;
+	bottom:3%;
+	border:1px solid gray;
+	width:500px;
+	height:120px;
+}
+#search4
+{
+	margin-top:15px;
+	border:1px solid white;
+	width:95%;
+	height:160px;
+}
+#search4 h2
+{
+	background-color: #c54b40;
+	width:85%;
+	margin:auto;
+	margin-bottom:25px;
+	text-align:center;
+}
+#search4 input[type="submit"]
+{
+	margin-top:12px;
+	margin-right:36%;
+    width:60%;
+}
+.search_insc
+{
+	margin-top:15px;
+	width:95%;
+}
+.search_insc h2
+{
+	background-color: #c54b40;
+	width:85%;
+	margin:auto;
+	margin-bottom:25px;
+	text-align:center;
+}
+.search_insc input[type="submit"]
+{
+	margin-top:12px;
+	display:block;
+    float:right;
+}

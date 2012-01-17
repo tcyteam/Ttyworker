@@ -1,0 +1,21 @@
+<div id="connectinfo">
+    <h3><a href="#">Welcome <?php echo ucfirst($_SESSION['user']->user);?></a></h3>
+        <p>
+        	Bienvenue dans le module d'administration.
+        	Une faq va être crée avec les différentes améliorations du système.
+        	<p>-Système de gestion utilisateurs</p>
+        	<p>-Système de gestion de groupes</p>
+        	<p>-Système de gestion de droits</p>
+        	<p>-Système de gestion de modules</p>
+        	<p>-Système de gestion de la messagerie</p>
+        	<p>-Système de gestion de contacts</p>
+        	<p>-Système de gestion de widgets</p>
+        	<p>-Système de gestion de news</p>
+        	<p>-Système de gestion d'images</p>
+        	<p>-Système de gestion de videos</p>
+        	<p>-Système de gestion des réseauw sociaux</p>
+        	<p>-Système de gestion de l'api</p>
+        	<p>-Système de gestion des applications</p>
+        	<p>-Système de gestion pour version mobile</p>
+        </p>
+</div>

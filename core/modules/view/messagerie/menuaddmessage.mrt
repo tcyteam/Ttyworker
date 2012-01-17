@@ -1,0 +1,8 @@
+﻿<?php
+$this->helper->Form();
+$this->helper->ErrorDisplay('<div id="mess_menu">');
+$this->helper->Submit('add','Envoyer');
+$this->helper->Submit('register','Enregistrer');
+$this->helper->Submit('delete','Supprimer');$this->helper->Disabled();
+$this->helper->ErrorDisplay('</div>');
+?>

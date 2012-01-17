@@ -1,0 +1,29 @@
+﻿<div id="profil">
+<?php
+for($i=0;$i<40;$i++)
+{
+    if(self::$com[self::$getRcv['id1']] == self::$getRcv['id1'])
+    {
+        echo '<div id="add_contact"><a href="'.$this->ReelDir().'contact/addmessage/'.self::$getRcv['id1'].'">Envoyer un message</a></div>'; 
+        break;
+    }
+    else
+    {
+        echo '<div id="add_contact"><a href="#">Ajouter à ses contacts</a></div>'; 
+        break;
+    }
+}
+?>
+<div id="profil_img">
+img
+</div>
+<div id="profil_user_info">
+<?php
+$this->helper->Link('#','lien','li');
+$this->helper->Link('#','lien','li');
+$this->helper->Link('#','lien','li');
+$this->helper->Link('#','lien','li');
+$this->helper->Rend();
+?>
+</div>
+</div>

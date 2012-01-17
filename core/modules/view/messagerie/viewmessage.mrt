@@ -1,0 +1,14 @@
+﻿<div id="messagerie">
+<?php
+include_once(self::$com['menu']);
+$this->helper->ErrorDisplay('<div id="mess_reception_one">');
+if(!empty(self::$com['mess_view_one']))
+{
+    $nb = self::$com['mess_view_one']->fetch(PDO::FETCH_OBJ);
+	$this->helper->ErrorDisplay($nb->message);	
+    self::$com['mess_view_one']->closeCursor();
+}
+$this->helper->ErrorDisplay('</div>');
+$this->helper->Rend();
+?>
+</div>

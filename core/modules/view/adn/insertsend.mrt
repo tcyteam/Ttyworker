@@ -1,0 +1,3 @@
+<?php
+$this->helper->TextBox('Message',self::$com['req']);
+?>

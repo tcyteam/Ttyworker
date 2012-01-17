@@ -1,0 +1,14 @@
+﻿<div id="viewgroup">
+<?php
+$this->helper->Form('ids2','viewgroup','ids2');
+$this->helper->Select('group')->SetLabel('Nom du groupe');
+while ($nb = self::$com['group']->fetch(PDO::FETCH_OBJ))
+{
+    $this->helper->AddOption($nb->id_group,$nb->group_name);
+}
+self::$com['group']->closeCursor();
+$this->helper->ErrorDisplay('<br>');
+$this->helper->Submit('modifier','Modifier');$this->helper->Submit('supprimer','Supprimer');
+$this->helper->Render();
+?>
+</div>

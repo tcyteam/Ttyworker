@@ -1,0 +1,10 @@
+<?php
+$menu = 'application/config/menu/';
+//Suite de la disposition html
+require_once($menu.'Content.php');
+$this->Msg('</div>'); 
+require_once($menu.'Bottom.php');
+$this->Msg('</div>');    
+$this->Msg('</div>');   
+$this->Msg('</div></body>');
+?>

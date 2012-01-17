@@ -1,0 +1,14 @@
+﻿<div id="viewdroit">
+<?php
+$this->helper->Form('ids2','','ids2');
+$this->helper->Select('droit');
+while ($nb = self::$com['droit']->fetch(PDO::FETCH_OBJ))
+{
+    $this->helper->AddOption($nb->permission,$nb->nom);
+}
+self::$com['droit']->closeCursor();
+$this->helper->ErrorDisplay('<br>');
+$this->helper->Submit('supprimer','Supprimer');
+$this->helper->Render();
+?>
+</div>

@@ -1,0 +1,16 @@
+﻿<div id="adnAdd">
+<?php
+$this->helper->Form('formulaire','add');
+$this->helper->LineEdit('user')->SetLabel('Nom d\'utilisateur : ');
+$this->helper->LineEdit('pass')->SetLabel('Mot de passe : ');
+              $this->helper->SetMode('password');
+$this->helper->LineEdit('email')->SetLabel('Email : ');
+              $this->helper->SetMode('email');
+$this->helper->LineEdit('group');
+              $this->helper->SetMode('hidden');
+              $this->helper->SetText('User876ts');
+$this->helper->Submit('ajouter','Ajouter');
+$this->helper->ErrorDisplay('<div class="error">'.self::$com['req'].self::$com['co'].'</div>');
+$this->helper->Render();
+?>
+</div>

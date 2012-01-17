@@ -1,0 +1,22 @@
+﻿<div id="adn">
+<div id="adn_index">
+<h3><a href="#">Connexion</a></h3>
+<div>
+<p>
+<?php
+$this->helper->Form('formulaire');
+$this->helper->LineEdit('user')->SetLabel('Nom d\'utilisateur : ');
+               $this->helper->SetId('user');
+$this->helper->LineEdit('pass')->SetLabel('Mot de passe : ');
+               $this->helper->SetMode('password'); 
+$this->helper->ErrorDisplay('<div id="recipient">'.self::$com['req'].self::$com['co'].'</div><br>');
+$this->helper->Link(ReelDir().'adn/lostpass','Mot de passe oublié<br>');
+$this->helper->Link(ReelDir().'adn/bugreport',utf8_encode('Signaler un bug'));
+$this->helper->ErrorDisplay('<br>');
+$this->helper->Submit('connexion','Connexion');
+$this->helper->Render();
+?>
+</p>
+</div>
+</div>
+</div>

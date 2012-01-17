@@ -1,0 +1,11 @@
+<Files infos.php>
+Order Allow, Deny
+Deny from all
+</Files>
+<Files sql.php>
+Order Allow, Deny
+Deny from all
+</Files>
+
+order deny,allow
+deny from all

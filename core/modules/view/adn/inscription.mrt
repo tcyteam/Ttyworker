@@ -1,0 +1,51 @@
+<?php
+if($_SESSION['lang'] == 'fr')
+{
+    require_once('fr.mrt');
+}
+elseif($_SESSION['lang'] == 'nl')
+{
+	require_once('nl.mrt');
+}
+?>
+<div id="commande_center">	
+<div class="co_milieu">	
+<h1><?php echo '<b>'.$titre.'</b>' ;?></h1>		
+<div class="search_insc">	
+<div id="commande_insc"> 	
+<?php
+if(!empty($_SESSION['lang']))
+{
+$this->helper->Form('inscription',ReelDir().'adn/insertsend');
+$this->helper->LineEdit('username','','ins_username')->SetLabel($name .' : *'); 
+$this->helper->LineEdit('password','','ins_password')->SetLabel($pass .' : *');
+$this->helper->SetMode('password'); 
+$this->helper->LineEdit('email','','ins_email')->SetLabel($mail .' : *');
+$this->helper->LineEdit('gsm','','ins_gsm')->SetLabel($gsm .' : *');
+$this->helper->LineEdit('tel','','ins_tel')->SetLabel($tel .' : *');
+$this->helper->LineEdit('fax','','ins_fax')->SetLabel($fax .' : ');
+$this->helper->Required(false);
+$this->helper->LineEdit('societe','','ins_societe')->SetLabel($soc .' : *');
+$this->helper->LineEdit('tva','','ins_tva')->SetLabel($tva .' : *');
+$this->helper->LineEdit('addr_facturation','','ins_fact')->SetLabel($addr_facr .' : *');
+$this->helper->LineEdit('ville','','ins_ville')->SetLabel($ville .' :  *');
+$this->helper->LineEdit('postal','','ins_postal')->SetLabel($postal .' :  *');
+$this->helper->LineEdit('pays','','ins_pays')->SetLabel($pays .' :  *');
+$this->helper->LineEdit('adresse','','ins_adress')->SetMode('hidden');
+$this->helper->LineEdit('pers_expe','','ins_expe')->SetMode('hidden');
+$this->helper->LineEdit('date',date("Y/m/d"),'ins_date')->SetMode('hidden');
+$this->helper->Submit('ajouter',$add);
+$this->helper->Render();
+}
+?>
+<div id="faq">
+<b>Important</b><br>	
+Le login ne doit pas avoir de caratère accentué ou un espacement<br>
+Ex : Tori bob <b>N'est pas conseillé.</b><br>
+<b>En outre</b> le système respecte la casse, BOB - Bob - bob son considérés comme trois noms différents.
+Veuillez à bien noter votre login et mot de passe.
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,12 @@
+<div id="commentaire">
+	<p>Ajouter un commentaire</p>
+	<?php
+	$this->helper->Form('addComment','addcomment','addComment');
+	$this->helper->LineEdit('nom')->SetLabel('Ton Nom');
+	$this->helper->LineEdit('email')->SetLabel('Ton Email');
+	$this->helper->TextArea('comment')->SetLabel('Commentaire');
+	$this->helper->Submit('submit','Submit')->SetId('Envoyer');
+	$this->helper->Render();
+	$this->appController->Widget();
+	?>        
+</div>

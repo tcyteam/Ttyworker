@@ -1,0 +1,18 @@
+#add_contact
+{
+    position: absolute;
+    top:20px;
+    right:30px;
+    background-color: #3c5281;
+    color:#36393D;
+    height:20px;  
+    width:150px;
+    padding-top:4px;
+    text-align: center;
+    border:1px solid gray;
+}
+#add_contact a 
+{
+    text-decoration:none;
+    color:white;
+}

@@ -1,0 +1,70 @@
+#menu-acceuil a {
+ display:block;
+ float:left;   
+ width:139px;
+ line-height:29px; /*hauteur de l'image de fond*/
+ background-image:url('images/bt_nl_acceuil.png');
+ color:#c23e3e;
+ text-decoration:none;
+ text-align:center;
+ }
+#menu-acceuil a:hover {
+ background-image:url('images/bt_nl_acceuil_on.png');
+ color:#332c2c;
+}
+#menu-service a {
+ display:block;
+ float:left;   
+ width:139px;
+ line-height:29px; /*hauteur de l'image de fond*/
+ background-image:url('images/bt_nl_services.png');
+ color:#c23e3e;
+ text-decoration:none;
+ text-align:center;
+ }
+#menu-service a:hover {
+ background-image:url('images/bt_nl_services_on.png');
+ color:#332c2c;
+}
+#menu-course a {
+ display:block;
+ float:left;   
+ width:139px;
+ line-height:29px; /*hauteur de l'image de fond*/
+ background-image:url('images/bt_nl_courses.png');
+ color:#c23e3e;
+ text-decoration:none;
+ text-align:center;
+ }
+#menu-course a:hover {
+ background-image:url('images/bt_nl_courses_on.png');
+ color:#332c2c;
+ }
+#menu-contact a {
+ display:block;
+ float:left;   
+ width:139px;
+ line-height:29px; /*hauteur de l'image de fond*/
+ background-image:url('images/bt_nl_contact.png');
+ color:#c23e3e;
+ text-decoration:none;
+ text-align:center;
+ }
+#menu-contact a:hover {
+ background-image:url('images/bt_nl_contact_on.png');
+ color:#332c2c;
+ }   
+#menu-commander a {
+  display:block;
+  float:left;   
+  width:139px;
+  line-height:29px; /*hauteur de l'image de fond*/
+  background-image:url('images/bt_nl_commander.png');
+  color:#c23e3e;
+  text-decoration:none;
+  text-align:center;
+}
+ #menu-commander a:hover {
+  background-image:url('images/bt_nl_commander_on.png');
+  color:#332c2c;
+} 

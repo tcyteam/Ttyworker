@@ -1,0 +1,11 @@
+﻿<div id="textbox">
+<div id="textboxtitre">Activation du compte</div>
+<div id="textboxmessage">
+<p>Ce compte est en attente d'activation</p>
+<?php
+$this->helper->Form();
+$this->helper->Submit('resend','Renvoyer un email');
+$this->helper->Render();
+?>
+</div>
+</div>

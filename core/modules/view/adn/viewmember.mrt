@@ -1,0 +1,118 @@
+<div id="updatemember">
+	<?php 
+    while ($nb = self::$com['result']->fetch(PDO::FETCH_OBJ)){?>
+    <h3><a href="#">Login information</a></h3>
+	<div>
+		<p>
+        <?php
+           $_SESSION['adm-gid'] = $nb->gid;
+           $this->helper->Form('member_udpate1');
+           $this->helper->LineEdit('user')->SetLabel('Username ');$this->helper->SetText(utf8_encode($nb->user));
+           $this->helper->Disabled();
+           $this->helper->LineEdit('oldpass')->SetLabel('Old password ');
+           $this->helper->SetMode('password');
+           $this->helper->LineEdit('newpass')->SetLabel('New password ');
+           $this->helper->SetMode('password');
+           $this->helper->LineEdit('conpass')->SetLabel('Confirm password ');
+           $this->helper->SetMode('password');
+           $this->helper->Submit('update1','Update');
+           $this->helper->Render();
+        ?>
+		</p>
+	</div>
+    <h3><a href="#">Personal Information</a></h3>
+    <div>
+	    <p>
+        <?php
+            $this->helper->Form('member_udpate2');
+            $this->helper->LineEdit('date_naissance','','date_naissance')->SetLabel('Date of birth ');$this->helper->SetText($nb->date_naissance);$this->helper->Required();
+            $this->helper->LineEdit('email')->SetLabel('E-mail ');$this->helper->SetText($nb->email);$this->helper->Required();
+            $this->helper->LineEdit('ville')->SetLabel('City ');$this->helper->SetText($nb->ville);$this->helper->Required();
+            $this->helper->LineEdit('code_postal')->SetLabel('Zip code ');$this->helper->SetText($nb->code_postal);$this->helper->Required();
+            $this->helper->LineEdit('pays')->SetLabel('Country ');$this->helper->SetText($nb->pays);$this->helper->Required();
+            $this->helper->ErrorDisplay('<br>');
+            $this->helper->Submit('update2','Update');
+            $this->helper->Render();
+    ?>
+	</p>
+    </div>
+    <?php 
+    } 
+    self::$com['result']->closeCursor();
+    ?> 
+    <?php
+    $group = new Group();
+    $lien_group = $this->FormGroup($_SESSION['user']->gid);
+    $viewgroup = $group->ViewGroupPermission($lien_group);
+    $perms = $group->ViewDroit();
+	$i=0;
+    
+	while($cedroit = $viewgroup->fetch(PDO::FETCH_OBJ))
+	{
+		$vars[$i] = $cedroit->permission;
+		$i++;
+	}
+    while($rest = $perms->fetch(PDO::FETCH_OBJ))
+    {
+        for($t=0; $t<$i; $t++)
+		{
+		   if(($vars[$t] == $rest->permission) AND ($rest->signification == 'administration'))
+		   {
+			  	$_SESSION['adm-acc'] = $rest->signification;
+		   }
+		} 
+		for($t=0; $t<$i; $t++)
+		{
+		    if(($vars[$t] == $rest->permission) AND ($rest->signification != 'administration') AND($rest->signification != 'disconnect') AND($rest->signification != 'updategroup')
+			AND($rest->signification != 'insertsend') AND($rest->signification != 'viewmember') AND($rest->signification != 'send') AND($rest->signification != 'insertsend') AND($rest->module != 'commande')
+			)
+		    {
+		       $disLinkMember = ReelDir().$rest->module.'/'.$rest->signification;
+               $disNameMember = ucfirst($rest->nom);
+		       $this->helper->Link($disLinkMember,$disNameMember,'li');
+		    }
+		}
+	}
+    if($_SESSION['adm-acc'] == 'administration')
+    {
+    ?>
+    <h3><a href="#">Administrattion</a></h3>
+    <div>
+    <p>
+    <?php
+		   $this->helper->Rend();
+    ?>
+	</p>
+    </div>
+    <?php
+    //Uniquement pour les administrateur, les devs et techniciens
+    if($_SESSION['adm-gid'] <= 11)
+	{
+    ?>
+    <h3><a href="#">Paramètres</a></h3>
+    <div>
+    <p>
+    <?php
+           $this->helper->Form('member_udpate4');
+		   $this->helper->Select('debug_mode')->SetLabel('Debug mode sql  ');
+		   
+		   if($_SESSION['sqltest'] == 'true')
+           {
+               $this->helper->AddOption('true','True','selected');
+			   $this->helper->AddOption('false','False');
+           }
+		   elseif($_SESSION['sqltest'] == 'false')
+           {
+               $this->helper->AddOption('false','False','selected');
+			   $this->helper->AddOption('true','True');
+           }
+		   $this->helper->Submit('update4');
+		   $this->helper->Render();
+    ?>
+	</p>
+    </div>
+    <?php
+	}
+	}
+    ?>
+</div>

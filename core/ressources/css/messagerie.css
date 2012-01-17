@@ -1,0 +1,59 @@
+.lien_align a
+{
+    text-align:center;
+}
+.lien_align input[type="checkbox"]
+{
+    float:left;
+}
+.lien_align
+{
+    width:100%;
+    border-collapse:collapse;
+}
+.lien_align th,td
+{
+    border-bottom:1px solid #CCCCFF;
+    text-align:center;
+    height:50px;
+}
+#addmessage
+{
+    width:100%;
+    color:#36393D;
+}
+#addmessage textarea
+{
+    height:310px;   
+}
+#addmessage label
+{
+    display:block;  
+    float:left;   
+    text-align:left;
+}
+#textbox
+{
+    width:300px;
+    margin:auto;
+    margin-top:3%;
+    color:black;
+}  
+#textboxtitre
+{
+    background-color: #c54b40;
+    color:#F9F7ED;
+
+    height:12%;
+    font-size:22px;
+    text-align:center;
+}
+#textboxmessage
+{
+    padding-top:20px;
+    height:78%;
+    width:100%;
+    text-align:center;
+    background-color:white;
+} 
+   

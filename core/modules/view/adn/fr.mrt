@@ -1,0 +1,21 @@
+<?php
+if(self::$com['fr_ins'])
+{
+   $titre = 'Merci de remplir le formulaire ci-dessous';
+   $name = 'Nom d\' utilisateur';
+   $pass = 'Mot de passe';
+   $mail = 'E-mail';
+   $gsm  = 'Gsm';
+   $fax = 'Fax';
+   $ville = 'Ville';
+   $postal = 'Code postale';
+   $pays = 'Pays';
+   $adresse = 'Adresse habituelle de prise en charge des colis';
+   $soc  = 'Denomination de la societé';
+   $tva  = 'TVA';
+   $addr_facr = 'Adresse de facturation';
+   $tel = 'Téléphone';
+   $per_expd = 'Personne responsable des expeditions';
+   $add = 'Enregistrer';
+}
+?>

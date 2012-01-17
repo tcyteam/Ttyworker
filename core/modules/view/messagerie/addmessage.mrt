@@ -1,0 +1,35 @@
+﻿<div id="messagerie">
+<?php
+include_once(self::$com['menu']);
+$this->helper->Rend();
+$this->helper->ErrorDisplay('<div id="addmessage">');
+$this->helper->Select('destinataire')->SetLabel('Destinataire ');
+$menucontact = $this->menu->ContactWidget();
+$contact = self::$com['menu_contact']->fetch(PDO::FETCH_OBJ);
+while ($ami = self::$com['menu_user']->fetch(PDO::FETCH_OBJ))
+{
+    if(((int)$contact->liens & $ami->uid))
+    {
+       if((isset(self::$getRcv['id1'])) AND (!empty(self::$getRcv['id1'])))
+       {  
+          if(self::$getRcv['id1'] == $ami->uid)
+          {
+             $this->helper->AddOption($ami->uid,ucfirst($ami->user));
+          }
+       }
+       else
+       {
+          $this->helper->AddOption($ami->uid,ucfirst($ami->user));
+       }
+    }
+}
+self::$com['menu_contact']->closeCursor();
+self::$com['menu_user']->closeCursor();
+self::$com['result']->closeCursor();
+$this->helper->LineEdit('objet')->SetLabel('Objet ');
+$this->helper->TextArea('editor1','editor1');
+$this->helper->ErrorDisplay(self::$com['editor']);
+$this->helper->ErrorDisplay('</div>');
+$this->helper->Render();
+?>
+</div>

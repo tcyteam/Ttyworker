@@ -1,0 +1,23 @@
+#profil_img
+{
+    width:150px;
+    height:150px;
+    position:absolute;
+    text-align:center;
+    top:20px;
+    left:30px;
+    border:1px solid gray;
+}
+#profil_user_info
+{
+    width:150px;
+    height:80px;
+    position:absolute;
+    top:172px;
+    left:30px;
+    text-align:center;
+}
+#profil_user_info a
+{
+    color:#36393D;
+}

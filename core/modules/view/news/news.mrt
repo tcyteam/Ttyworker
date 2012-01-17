@@ -1,0 +1,16 @@
+<?php
+		while($news = self::$communicator['news']->fetch(PDO::FETCH_OBJ))
+        {
+			$exec =
+			'<div class="post">
+				<h2 class="title"><a href="#">'.ucfirst($news->titre).'</a></h2>
+				<p class="meta"><span class="date">le '.$this->DateFr($news->date_creation).' à '.$news->heure_creation.'</span><span class="posted">Posted by <a href="#">'.$news->auteur.'</a></span></p>
+				<div style="clear: both;">&nbsp;</div>
+				<div class="entry">
+					'.$news->area.'
+					<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
+				</div>
+			</div>';  
+			$this->Msg($exec);
+		}
+?>

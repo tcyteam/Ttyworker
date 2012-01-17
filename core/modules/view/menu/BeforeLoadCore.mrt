@@ -1,0 +1,11 @@
+<?php
+$menu = 'application/config/menu/';
+//Disposition html
+$this->Msg('<body onload="spam()"><div id="api">');
+$this->Msg('<div id="canvas">');
+$this->Msg('<div id="content">');
+require_once($menu.'Top.php');
+require_once($menu.'Right.php');
+require_once($menu.'Left.php');
+$this->Msg('<div id="content">');
+?>

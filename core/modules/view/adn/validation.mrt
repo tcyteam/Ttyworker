@@ -1,0 +1,2 @@
+﻿<h2>Activation d'un compte</h2>
+<p><?php echo self::$com['req'];?></p>

@@ -1,0 +1,21 @@
+<?php
+if(self::$com['nl_ins'])
+{
+   $titre = 'Dank u voor het invullen van het onderstaande formulier in';
+   $name = 'Gebruikersnaam';
+   $pass = 'Wachtwoord';
+   $mail = 'E-mail';
+   $gsm  = 'Gsm';
+   $fax = 'Fax';
+   $ville = 'Stad';
+   $postal = 'Postcode';
+   $pays = 'Land';
+   $adresse = 'Gebruikelijke adres zorgarrangementen';
+   $soc  = 'Firmanaam';
+   $tva  = 'BTW';
+   $addr_facr = 'Adres van ophaling';
+   $tel = 'Telefoon';
+   $per_expd = 'Naam van de verantwoordelijke van de verzendingen';
+   $add = 'Record';
+}
+?>

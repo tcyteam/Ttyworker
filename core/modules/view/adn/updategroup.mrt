@@ -1,0 +1,46 @@
+﻿<div id="modif_group">
+<?php
+// si l'identifiant du groupé à été envoyé
+if(!empty(self::$getRcv['id1']))
+{
+	$group = self::$com['group']->fetch(PDO::FETCH_OBJ);
+    $this->helper->Form('ids2',ReelDir().'adn/updategroup/'.self::$com['id_name'],'ids2');
+    $this->helper->LineEdit('nom_modif_group')->SetLabel('Nom du groupe ');
+    $this->helper->SetText($group->group_name);
+    $this->helper->Select('modif')->SetLabel('Droits du groupe ');
+	$liste1 = $this->PutInArray(self::$com['droit'],true);
+	$liste2 = $this->PutInArray(self::$com['group_permission']);
+	
+	//charge les droit  disponible
+	foreach ($liste1[0] as $cle)
+    {
+    	// verifie que le groupe a le droit à l'action puis le charge
+    	if($liste2[$cle] == $liste1[0][$cle])
+		{
+			$this->helper->AddOption($cle,$liste1[1][$cle]);
+		}	
+	}
+    self::$com['droit']->closeCursor();
+    $this->helper->Submit('deldroit','Supprimer','d');
+    $this->helper->Select('add')->SetLabel('Autres droits :');
+	//charge les droits disponible
+	foreach ($liste1[0] as $cle)
+    {
+    	// verifie que le groupe n'a le droit à l'action puis le charge
+    	if($liste2[$cle] != $cle)
+		{
+			$this->helper->AddOption($cle,$liste1[1][$cle]);
+		}	
+	}
+	self::$com['group']->closeCursor();
+    self::$com['group_permission']->closeCursor();
+    $this->helper->Submit('addroit','Ajouter','c');
+    $this->helper->Submit('deldroit','Supprimer','d');
+    $this->helper->Render();
+}
+else
+{
+    $this->Msg('Aucun groupe n\'a été renseigner pour la modificattion');
+}
+?>
+</div>

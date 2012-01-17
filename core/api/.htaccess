@@ -1,0 +1,7 @@
+order deny,allow
+deny from all
+
+AuthType Basic
+AuthName "Acc�s prot�g�"
+AuthUserFile "/core/api"
+require valid-user

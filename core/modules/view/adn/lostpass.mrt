@@ -1,0 +1,15 @@
+<div id="adn">
+<div id="adn_index">
+<h3><a href="#">Identifiez votre compte</a></h3>
+<div>
+<p>
+<?php
+$this->helper->Form('recup_pass');
+$this->helper->LineEdit('lostpass')->SetLabel('Saisissez votre e-mail : ');
+$this->helper->ErrorDisplay('<br>');
+$this->helper->Submit('passrecup','Recuperer');
+$this->helper->Render();
+?>
+</div>
+</div>
+</div>

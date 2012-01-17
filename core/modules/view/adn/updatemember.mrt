@@ -1,0 +1,100 @@
+﻿<div id="updatemember">
+	<?php 
+    $i=0;
+    while ($tk = self::$com['group']->fetch(PDO::FETCH_OBJ))
+    {
+       $idGroup[$i] = $tk->id_group;
+	   $groupName[$i] = $tk->group_name;
+       $i++;
+    }
+    while ($nb = self::$com['result']->fetch(PDO::FETCH_OBJ)){?><h3><a href="#"><?php echo ucfirst($nb->user); ?></a></h3>
+	<div>
+		<div class="tabs">
+			<ul>
+		         <li><a href="#tabs-1<?php echo $nb->id ;?>">Login information</a></li>
+		         <li><a href="#tabs-2<?php echo $nb->id ;?>">Personal information</a></li>
+		         <li><a href="#tabs-3<?php echo $nb->id ;?>">Customer information</a></li>
+	        </ul>
+	    <div id="tabs-1<?php echo $nb->id ;?>">
+	    <p>	
+        <?php
+           $this->helper->Form('member_udpate1_'.$nb->user,'','member_udpate1_'.$nb->user);
+           $this->helper->LineEdit('user')->SetLabel('Nom d\'utilisateur ');$this->helper->SetText(utf8_decode($nb->user));
+		   $this->helper->LineEdit('uid')->SetLabel('Uid');$this->helper->SetText($nb->uid);
+           $this->helper->ReadOnly();
+           $this->helper->LineEdit('newpass')->SetLabel('Mot de passe ');$this->helper->SetMode("password");$this->helper->Required(false);
+		   
+           //Uniquement pour les supers administrateurs
+           if($_SESSION['user']->gid <= 3)
+		   {
+           $this->helper->Select('id_name')->SetLabel('Nom du groupe  ');
+           for($i=0; $i<count($idGroup);$i++)
+           {
+               if($nb->gid == $idGroup[$i])
+               {
+                  $this->helper->AddOption($idGroup[$i],$groupName[$i],'selected');
+               }
+			   else
+               {
+                  $this->helper->AddOption($idGroup[$i],$groupName[$i]);
+               }
+           }
+		   }
+		   //Uniquement pour les supers administrateurs
+           if($_SESSION['user'] <= 12)
+		   {
+		   	   if(!empty($nb->hash_validation))
+			   {
+                  $this->helper->Select('actived')->SetLabel('Account  ');
+				  $this->helper->AddOption('zero','Activer le compte');
+                  $this->helper->AddOption($nb->hash_validation,utf8_encode('Désactiver le compte'),'selected');
+			   }
+		   }
+		   $this->helper->ErrorDisplay('<br><br>');
+           $this->helper->Submit('update1','Update');
+           $this->helper->Render();
+        ?>
+       </p>
+        </div>
+        <div id="tabs-2<?php echo $nb->id ;?>">
+        <p>	
+        <?php
+           $this->helper->Form('member_udpate2_'.$nb->user,'','member_udpate1_'.$nb->user);
+           $this->helper->LineEdit('date_naissance')->SetLabel('Date de naissance ');$this->helper->SetText($nb->date_naissance);
+           $this->helper->LineEdit('email')->SetLabel('Email ');$this->helper->SetText($nb->email);
+           $this->helper->LineEdit('tel')->SetLabel(utf8_encode('Télephone  '));$this->helper->SetText($nb->telephone);$this->helper->Required(false);
+           $this->helper->LineEdit('ville')->SetLabel('Ville  ');$this->helper->SetText($nb->ville);$this->helper->Required(false);
+           $this->helper->LineEdit('pays')->SetLabel('Pays  ');$this->helper->SetText($nb->pays);$this->helper->Required(false);
+           $this->helper->LineEdit('code_postal')->SetLabel('Code postal  ');$this->helper->SetText($nb->code_postal);$this->helper->Required(false);
+		   $this->helper->Submit('update2','Update');
+           $this->helper->Render();
+        ?>	
+        </p>
+        </div>
+        <div id="tabs-3<?php echo $nb->id ;?>">
+        <p>
+        <?php
+		   $this->helper->Form('member_udpate3_'.$nb->user,'','member_udpate1_'.$nb->user);
+           $this->helper->LineEdit('client')->SetLabel(utf8_encode('N° client'));$this->helper->SetText($nb->id);$this->helper->Disabled();
+           $this->helper->LineEdit('company')->SetLabel('Company name');$this->helper->SetText(utf8_encode($nb->societe));
+           $this->helper->LineEdit('tva')->SetLabel(utf8_encode('N° TVA / BTV '));$this->helper->SetText($nb->tva);
+           $this->helper->LineEdit('adresse_fact')->SetLabel('Billing address ');$this->helper->SetText(utf8_encode($nb->adresse_fact));
+           $this->helper->LineEdit('ville')->SetLabel('City');$this->helper->SetText(utf8_encode($nb->ville));
+           $this->helper->LineEdit('postal')->SetLabel('Zip code');$this->helper->SetText($nb->postal);
+           $this->helper->LineEdit('pays')->SetLabel('Country ');$this->helper->SetText(utf8_encode($nb->pays));$this->helper->Required(false);
+           $this->helper->LineEdit('telephone')->SetLabel('Phone ');$this->helper->SetText('0'.$nb->telephone);$this->helper->Required(false);
+           $this->helper->LineEdit('gsm')->SetLabel('Gsm');$this->helper->SetText('0'.$nb->gsm);$this->helper->Required(false);
+           $this->helper->LineEdit('fax')->SetLabel('Fax');$this->helper->SetText('0'.$nb->fax);$this->helper->Required(false);
+           $this->helper->ErrorDisplay('<br>');
+           $this->helper->Submit('update3','Update');
+           $this->helper->Render();
+        ?>	
+        </p>
+        </div>	
+       </div>
+	</div>
+    <?php 
+    } 
+    self::$com['result']->closeCursor();
+    ?>
+</div>

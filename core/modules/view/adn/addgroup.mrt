@@ -1,0 +1,18 @@
+﻿<div class="add_group">
+<?php
+$this->helper->Form('ids1','addgroup','ids1');
+$this->helper->LineEdit('nom_group')->SetLabel('Nom du groupe : ');
+if(!empty(self::$com['result']))
+{
+   $this->helper->CheckBox('perms[]','perms',true);
+   while ($nb = self::$com['result']->fetch(PDO::FETCH_OBJ))
+   {
+         $this->helper->AddValue($nb->permission,ucfirst($nb->nom));
+   }
+   self::$com['result']->closeCursor();
+}
+$this->helper->Submit('addgroup','Ajouter un groupe','b');				  
+$this->helper->Render();
+?>
+</div>
+
