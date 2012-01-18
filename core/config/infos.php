@@ -13,6 +13,10 @@
     define('TELEPHONE','+32494675249');
     define('LICENCE','<a href="http://creativecommons.org/licenses/by-nd/3.0/deed.fr">http://creativecommons.org/licenses/by-nd/3.0/deed.fr</a>');
     
+	define('CHARSET','UTF-8');
+	define('CSSCHARSET','iso-8859-1');
+	define('DESCRIPTION','Php web framework');
+	
     define('COREDIR','core/api/');
     define('COREMODULE','core/modules/');
     define('CORECONFIG','core/config/');   

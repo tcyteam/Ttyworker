@@ -7,8 +7,8 @@
 				<p class="meta"><span class="date">le '.$this->DateFr($news->date_creation).' à '.$news->heure_creation.'</span><span class="posted">Posted by <a href="#">'.$news->auteur.'</a></span></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
-					'.$news->area.'
-					<p class="links"><a href="plugins/news/getnews">Retour</a></p>
+					<p>'.$news->area.'</p>
+					<p class="links"><a href="'.$this->ReelDir().'plugins/news">Retour</a></p>
 				</div>
 			</div>';  
 			$this->Msg($exec);

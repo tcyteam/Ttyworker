@@ -7,8 +7,8 @@
 				<p class="meta"><span class="date">le '.$this->DateFr($news->date_creation).' à '.$news->heure_creation.'</span><span class="posted">Posted by <a href="#">'.$news->auteur.'</a></span></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
-					'.$news->area.'
-					<p class="links"><a href="plugins/news/read/'.$news->id.'">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
+					<p>'.$this->Tronquer($news->area).'</p>
+					<p class="links"><a href="'.$this->ReelDir().'plugins/readnews/'.$news->id.'">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
 				</div>
 			</div>';  
 			$this->Msg($exec);

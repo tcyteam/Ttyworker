@@ -670,7 +670,7 @@ abstract class Tty extends Application
          * @access  public
          * @return renvoie les diffÃ©rents modules charger, definis le charset et l'emplacement des css et autres 
          */          
-       protected function DocType($charset='utf-8',$css='core/config/core.php',$cssprint='core/config/core.php',$plugins='externes/scriptaculous/',$csscharset= 'iso-8859-1')
+       protected function DocType($charset=CHARSET,$css='core/config/core.php',$cssprint='core/config/core.php',$plugins='externes/scriptaculous/',$csscharset=CSSCHARSET)
        {
 		
 	      $plugins='externes/scriptaculous/';
@@ -699,15 +699,15 @@ abstract class Tty extends Application
           <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
           <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
           <head>
-	      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		  <meta name="description" content="Course express et longue distance">';
+	      <meta http-equiv="Content-Type" content="text/html; charset='.$charset.'"/>
+		  <meta name="description" content="'.DESCRIPTION.'">';
 		  if(empty(self::$getRcv['action']))
 		  {
 		  	 $doctype = $doctype.'<title>'.$this->titre.' - '.self::$getRcv['module'].' - Acceuil</title>'; 
 		  }	
 		  else 
 		  {
-		     $doctype = $doctype.'<title>'.$this->titre.' - '.self::$getRcv['module'].' - '.self::$getRcv['action'].'</title>'; 
+		     $doctype = $doctype.'<title>'.$this->titre.' - '.self::$getRcv['module'].' - '.self::$getRcv['action'].' </title>'; 
 		  }       
 	      if(JQUERY == "true")
 	      {	  
@@ -836,7 +836,26 @@ abstract class Tty extends Application
 		   }	
 	    }
        /**
-         * @access  protected
+         * @access  public function Tronquer($description,$max_caracteres=100)
+         * @return tronque une chaine de caractère avec nombre de caractères limites
+         */ 	   
+        public function Tronquer($description,$max_caracteres=100)
+        {
+	       // Test si la longueur du texte dépasse la limite
+	       if (strlen($description)>$max_caracteres)
+	       {    
+		       // Séléction du maximum de caractères
+		       $description = substr($description, 0, $max_caracteres);
+		       // Récupération de la position du dernier espace (afin déviter de tronquer un mot)
+		       $position_espace = strrpos($description, " ");    
+		       $description = substr($description, 0, $position_espace);    
+		       // Ajout des "..."
+		       $description = $description."...";
+	       }
+	       return $description;
+        }	   
+       /**
+         * @access  protected Redirection($lien,$temp=100)
          * @return fait une redirection vers le lien donner Ã  x ms donner
          */           
        protected function Redirection($lien,$temp=100)
