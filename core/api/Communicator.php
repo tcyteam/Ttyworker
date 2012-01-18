@@ -27,7 +27,14 @@ abstract class Communicator implements News,Social,Video,Outil,Image
     }
 	public function News()
 	{
+		$this->$type('*','','article order by date_creation asc limit 0, 5');
 		require_once("core/modules/view/news/news.mrt");		
+	}
+	public function ReadNews()
+	{
+		$id = htmlentities($_GET['id1']);
+		$this->$type('*','id='.$id,'article');
+		require_once("core/modules/view/news/readnews.mrt");
 	}	
 	public function AddNews($titre='',$auteur='',$area='',$table='',$imgLink='',$vidLink='')
 	{

@@ -27,13 +27,20 @@ class AppController extends Tty
       */    
      public function AppController()
      {
-         $objModel = ucfirst(self::$getRcv['module']).'Model';
-         $objController = ucfirst(self::$getRcv['module']).'Controller';
-         $this->appModel = new $objModel();
-         self::$com['model'] = $this->appModel;
-         $this->appController = new $objController(); 
-         self::$com['controller'] = $this->appController;
-         return $this->appController;
+     	if(self::$getRcv['module'] == 'Plugins')
+		{
+		   		
+		}
+		else
+		{
+           $objModel = ucfirst(self::$getRcv['module']).'Model';
+           $objController = ucfirst(self::$getRcv['module']).'Controller';
+           $this->appModel = new $objModel();
+           self::$com['model'] = $this->appModel;
+           $this->appController = new $objController(); 
+           self::$com['controller'] = $this->appController;
+		}   
+        return $this->appController;
      } 
 	 public function MysqlTest()
 	 {
@@ -95,11 +102,22 @@ class AppController extends Tty
             {
                 $this->BeforeLoadCore();
                 include_once('core/index.php'); 
-            }  
+            } 
+			elseif(self::$getRcv['module'] == 'Plugins')
+			{
+				$methode = self::$getRcv['action'];
+				$type = self::$getRcv['id1'];
+                $this->BeforeLoadCore();
+				if((!empty($methode)) AND ((!empty($type))))
+				{				
+				    $this->$methode();
+				}		
+                include_once('core/index.php');	
+			}
             else
             {
                 $this->BeforeLoadCore();
-                $this->helper->TextBox('CoreController n\'existe pas','Le module demandé n\'existe pas');
+                $this->helper->TextBox('Erreur système','Le module demandé n\'existe pas ou n\'est pas activé');
             }
          }
          else
@@ -170,9 +188,13 @@ class AppController extends Tty
                        $this->helper->TextBox('Error 403 : ','Accès interdit !');  
                     }
                 }
+				elseif(self::$getRcv['module'] == 'Plugins')
+				{
+					include_once('core/modules/index.php');
+				}
                 else
                 {
-                   $this->helper->TextBox('Le module '.self::$getRcv['module'].' n\'existe pas');
+                   $this->helper->TextBox('Erreur système','Le module '.self::$getRcv['module'].' n\'existe pas');
                 }
            }
          }
@@ -357,6 +379,8 @@ class AppController extends Tty
          define('DEFS1','application/public/view/'.strtolower(self::$getRcv['module']).'/index.mrt');     
          define('DEFS2','application/private/view/'.strtolower(self::$getRcv['module']).'/index.mrt');
          define('DEFS3','core/modules/view/'.strtolower(self::$getRcv['module']).'/'.'index.mrt');
+		 
+		 define('PLUG','core/modules/view/'.strtolower(self::$getRcv['action']).'/'.strtolower(self::$getRcv['action'].'.mrt'));
          
          $module = self::$getRcv['module'];
          $action = self::$getRcv['action'];
@@ -383,6 +407,10 @@ class AppController extends Tty
                      $this->AppController();
                      $this->AdminLevelControl(VUES3);
                  }
+                 elseif((file_exists(PLUG)) AND ($this->MethodExists('Application',self::$getRcv['action'])))
+                 {
+                     $this->AppController();
+                 }				 
                  else
                  {     
                     if($this->ClassExists(self::$getRcv['action']) == false)

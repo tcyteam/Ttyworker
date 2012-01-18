@@ -8,7 +8,7 @@
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
 					'.$news->area.'
-					<p class="links"><a href="plugins/news/read/'.$news->id.'">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
+					<p class="links"><a href="plugins/news/getnews">Retour</a></p>
 				</div>
 			</div>';  
 			$this->Msg($exec);
