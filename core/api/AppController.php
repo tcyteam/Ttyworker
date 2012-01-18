@@ -108,7 +108,7 @@ class AppController extends Tty
 				$methode = self::$getRcv['action'];
 				$type = self::$getRcv['id1'];
                 $this->BeforeLoadCore();
-				if((!empty($methode)) AND ((!empty($type))))
+				if((!empty($methode)) AND ($this->MethodExists('Application',self::$getRcv['action'])))
 				{				
 				    $this->$methode();
 				}		
@@ -380,7 +380,6 @@ class AppController extends Tty
          define('DEFS2','application/private/view/'.strtolower(self::$getRcv['module']).'/index.mrt');
          define('DEFS3','core/modules/view/'.strtolower(self::$getRcv['module']).'/'.'index.mrt');
 		 
-		 define('PLUG','core/modules/view/'.strtolower(self::$getRcv['action']).'/'.strtolower(self::$getRcv['action'].'.mrt'));
          
          $module = self::$getRcv['module'];
          $action = self::$getRcv['action'];
@@ -407,7 +406,7 @@ class AppController extends Tty
                      $this->AppController();
                      $this->AdminLevelControl(VUES3);
                  }
-                 elseif((file_exists(PLUG)) AND ($this->MethodExists('Application',self::$getRcv['action'])))
+                 elseif((file_exists(VUES3)) AND ($this->MethodExists('Application',self::$getRcv['action'])))
                  {
                      $this->AppController();
                  }				 

@@ -1,4 +1,6 @@
 <?php
+if((!empty(Tty::$getRcv['id1'])) AND (!empty(self::$communicator['news'])))
+{
 		while($news = self::$communicator['news']->fetch(PDO::FETCH_OBJ))
         {
 			$exec =
@@ -8,9 +10,10 @@
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
 					'.$news->area.'
-					<p class="links"><a href="plugins/news/getnews">Retour</a></p>
+					<p class="links"><a href="'.$this->ReelDir().'plugins/news">Retour</a></p>
 				</div>
 			</div>';  
 			$this->Msg($exec);
 		}
+}
 ?>
