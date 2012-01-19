@@ -59,8 +59,12 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 		$id = htmlentities($_GET['id1']);
 		$this->GetNews('*','id='.$id,'article');
 		require_once("core/modules/view/plugins/readnews.mrt");
+	}
+	public function NewsAdd()
+	{
+		
 	}	
-	public function AddNews($titre='',$auteur='',$area='',$table='',$imgLink='',$vidLink='')
+	public function AddNews($titre='',$auteur='',$area='',$table='article',$imgLink='',$vidLink='')
 	{
 		$date_creation = date("Y-m-d");
 		$heure_creation = date("H:i:s");
@@ -178,7 +182,6 @@ abstract class Communicator implements News,Social,Video,Outil,Image
         }
 		
         $query = 'INSERT INTO `'.SGBD.'`.`'.$table.'` ('.$attr.') VALUES ('.$value.')';
-		echo $query;
 		$this->ComMess = $this->ComMess.'<br>'.$query;
         self::$communicator['pdo']->exec($query);
 	}
