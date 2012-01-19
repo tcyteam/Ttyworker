@@ -22,7 +22,6 @@ abstract class Communicator implements News,Social,Video,Outil,Image
     /**
      * DateFr(date) prend une date aux format 12-12-2012
 	 * 
-     *
      * @return date au format : dimanche 15 septembre 2012
      * @author Yannick Martins
      */	
@@ -48,7 +47,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	public function News()
 	{
 		$this->GetNews('*','','article order by date_creation asc limit 0, 5');
-		require_once("core/modules/view/news/news.mrt");		
+		require_once("core/modules/view/plugins/news.mrt");		
 	}
     /**
 	 * News() Fait une requete de selection avec le critère id sur la table article
@@ -60,7 +59,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	{
 		$id = htmlentities($_GET['id1']);
 		$this->GetNews('*','id='.$id,'article');
-		require_once("core/modules/view/news/readnews.mrt");
+		require_once("core/modules/view/plugins/readnews.mrt");
 	}	
 	public function AddNews($titre='',$auteur='',$area='',$table='',$imgLink='',$vidLink='')
 	{
