@@ -53,14 +53,23 @@
 }
 #newsadd textarea
 {
-	height:200px;
-	width:350px;
+	height:400px;
+	width:560px;
+	float:right;
 }
 #newsadd input[type="text"]
 {
-	width:350px;
+	width:455px;
 }
 #newsadd input[type="submit"]
 {
 	float:right;
+}
+#newsadd form label{  
+    display:block;  
+    float:left;  
+    width:100px;  
+    text-align:left; 
+    margin-right:2px;
+    margin-bottom:1px;
 }
