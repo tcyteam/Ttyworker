@@ -11,7 +11,7 @@
   //]]>
 </script>	
 <?php
-$this->helper->Form('formulaire','addnews');
+$this->helper->Form('formulaire','plugings/addnews');
 $this->helper->LineEdit('user')->SetLabel('Titre : ');
 $this->helper->LineEdit('tag')->SetLabel('Tags : ');
 $this->helper->TextArea('contenu')->SetId('contenu');
