@@ -683,6 +683,7 @@ abstract class Tty extends Application
 		  $jwww='externes/jwww/';
 		  $cssfr=$this->ReelDir().'core/ressources/themes/base/menu_fr.css';
 		  $cssnl=$this->ReelDir().'core/ressources/themes/base/menu_nl.css';
+		  $nicedit=$this->ReelDir().'externes/nicedit/nicEdit.js';
 	  
           $this->css = $this->ReelDir().$css;
 		  $this->css = $this->ReelDir().$css;
@@ -729,6 +730,11 @@ abstract class Tty extends Application
               <script type="text/javascript" src="'.$this->ckeditor.'ckeditor.js"></script>
               <script type="text/javascript" src="'.$this->ckeditor.'sample.js"></script>';           
 	      }	 
+          if(NICEDIT == 'true')
+          {
+	          $doctype = $doctype.'	  
+              <script type="text/javascript" src="'.$nicedit.'"></script>';         
+	      }	
           if(FORMVALIDATOR == 'true')
           {
 	          $doctype = $doctype.'	  
@@ -880,7 +886,7 @@ abstract class Tty extends Application
          * @access  protected
          * @return autorise un module Ã  utiliser le l'editeur de texte compris dans l'api
          */         
-       protected function AllowEditor($var=false,$option='simple')
+       protected function AllowEditor($var=false,$option='minimal')
        {
 	       self::$editorOpt = $option;
 	       return self::$editor = $var; 

@@ -62,7 +62,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	}
 	public function NewsAdd()
 	{
-		
+		require_once("core/modules/view/plugins/newsadd.mrt");
 	}	
 	public function AddNews($titre='',$auteur='',$area='',$table='article',$imgLink='',$vidLink='')
 	{

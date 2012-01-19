@@ -46,3 +46,21 @@
 	padding-bottom: 20px;
 	text-align: justify;
 }
+
+#newsadd
+{
+	width:100%;
+}
+#newsadd textarea
+{
+	height:200px;
+	width:350px;
+}
+#newsadd input[type="text"]
+{
+	width:350px;
+}
+#newsadd input[type="submit"]
+{
+	float:right;
+}

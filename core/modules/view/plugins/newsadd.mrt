@@ -1,0 +1,21 @@
+<div id="newsadd">
+<script type="text/javascript">
+//<![CDATA[
+
+  bkLib.onDomLoaded(function() {
+
+        new nicEditor({iconsPath : '../externes/nicedit/nicEditorIcons.gif'}).panelInstance('contenu');
+
+  });
+
+  //]]>
+</script>	
+<?php
+$this->helper->Form('formulaire','addnews');
+$this->helper->LineEdit('user')->SetLabel('Titre : ');
+$this->helper->LineEdit('tag')->SetLabel('Tags : ');
+$this->helper->TextArea('contenu')->SetId('contenu');
+$this->helper->Submit('ajouter','Ajouter');
+$this->helper->Render();
+?>
+</div>

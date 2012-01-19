@@ -36,6 +36,7 @@
 	   */ 
        define('JQUERY','true');
 	   define('NIVO','false');
+	   define('NICEDIT','true');
        define('FORMVALIDATOR','false');
        define('FILESTYLE','false');
        define('UNIFORM','false');
