@@ -12,7 +12,7 @@ $ this-> right ['name of your method to protect'] is used to temporarily remove 
 $ editor that enables the textarea
 self:: $ com ['model'] for the return of sql query
 
-To create a module it existse three branch.
+To create a module there are three branch.
 private to the modules that the operation of the application
 public for modules that will be directly displayed
 Then the core modules that are programmed by the creator
