@@ -8,10 +8,24 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	public $ComMess;
 	public static $communicator = array();
 	
+    /**
+     * Communicator() est le Contructeur de la classe Communicator
+	 * Se connecte à la base de données mysql
+     *
+     * @return void()
+     * @author Yannick Martins
+     */
 	public function Communicator()
 	{
 		$this->SqlConnect();
 	}
+    /**
+     * DateFr(date) prend une date aux format 12-12-2012
+	 * 
+     *
+     * @return date au format : dimanche 15 septembre 2012
+     * @author Yannick Martins
+     */	
 	public function DateFr($date) 
 	{
         $date = explode("-", $date);
@@ -25,15 +39,27 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 
         return ucfirst(strftime('%A %d %B %Y', $date));
     }
+    /**
+	 * News() Fait une requete de selection sans critère vers la table par defaut article
+     *
+     * @return affiche le resultat sur la vue news
+     * @author Yannick Martins
+     */		
 	public function News()
 	{
-		$this->$type('*','','article order by date_creation asc limit 0, 5');
+		$this->GetNews('*','','article order by date_creation asc limit 0, 5');
 		require_once("core/modules/view/news/news.mrt");		
 	}
+    /**
+	 * News() Fait une requete de selection avec le critère id sur la table article
+     *
+     * @return affiche le resultat sur la vue readnews
+     * @author Yannick Martins
+     */		
 	public function ReadNews()
 	{
 		$id = htmlentities($_GET['id1']);
-		$this->$type('*','id='.$id,'article');
+		$this->GetNews('*','id='.$id,'article');
 		require_once("core/modules/view/news/readnews.mrt");
 	}	
 	public function AddNews($titre='',$auteur='',$area='',$table='',$imgLink='',$vidLink='')
