@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @author Yannick Martins
+ * @see InterfaceNews,InterfaceImage,InterfaceVideo,Application,Addon
+ */ 
 abstract class Communicator implements News,Social,Video,Outil,Image
 {
 	public $ComPdo;
@@ -13,7 +16,6 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	 * Se connecte à la base de données mysql
      *
      * @return void()
-     * @author Yannick Martins
      */
 	public function Communicator()
 	{
@@ -23,7 +25,6 @@ abstract class Communicator implements News,Social,Video,Outil,Image
      * DateFr(date) prend une date aux format 12-12-2012
 	 * 
      * @return date au format : dimanche 15 septembre 2012
-     * @author Yannick Martins
      */	
 	public function DateFr($date) 
 	{
@@ -42,7 +43,6 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	 * News() Fait une requete de selection sans critère vers la table par defaut article
      *
      * @return affiche le resultat sur la vue news
-     * @author Yannick Martins
      */		
 	public function News()
 	{
@@ -53,7 +53,6 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	 * News() Fait une requete de selection avec le critère id sur la table article
      *
      * @return affiche le resultat sur la vue readnews
-     * @author Yannick Martins
      */		
 	public function ReadNews()
 	{
