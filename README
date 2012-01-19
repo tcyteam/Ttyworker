@@ -1,0 +1,21 @@
+Ttyworker is a PHP framework that allows you to set up modules for existing web sites 
+very quickly but it can also be used to create a website or application from beginning to end. 
+Ttyworker will be divided into several parts: Tty Blogframe to be primarily for the implementation of blog system. 
+tty Cms Ttyworker framework
+
+How to begin
+
+Variable to know
+
+com $ for transmitting data to views
+$ this-> right ['name of your method to protect'] is used to temporarily remove the rights to the action performed.
+$ editor that enables the textarea
+self:: $ com ['model'] for the return of sql query
+
+To create a module it existse three branch.
+private to the modules that the operation of the application
+public for modules that will be directly displayed
+Then the core modules that are programmed by the creator
+
+Example of a module called News:
+for a minimum must be on file with controller news.php declaration as a class called NewsController with at least one method NewsController Index and then in the Templates folder with a class called NewsModel a method NewsModel.
