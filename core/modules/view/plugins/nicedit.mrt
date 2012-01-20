@@ -1,0 +1,9 @@
+<script type="text/javascript">;
+//<![CDATA[;
+bkLib.onDomLoaded(function() {
+
+new nicEditor({iconsPath : '<?php echo $directory;?>'}).panelInstance('<?php echo $name;?>');
+
+});
+//]]>
+</script>

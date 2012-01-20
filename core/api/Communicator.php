@@ -10,6 +10,8 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	public $ComRes;
 	public $ComMess;
 	public static $communicator = array();
+	public static $editor;
+	public static $editorOpt;
 	
     /**
      * Communicator() est le Contructeur de la classe Communicator
@@ -228,6 +230,62 @@ abstract class Communicator implements News,Social,Video,Outil,Image
         }	  
         return $this->ComPdo; 
 	}
-
+    /**
+    * @access  protected
+    * @return autorise un module Ã  utiliser le l'editeur de texte compris dans l'api
+    */         
+    protected function AllowEditor($var=false,$option='minimal')
+    {
+	    self::$editorOpt = $option;
+		self::$editor = $var;
+	    return self::$editor; 
+     } 
+    /**
+    * @access  protected
+    * @return affiche un editeur de texte diffÃ©rents selon que minimal, simple est Ã©tÃ© choisit sinon il affiche la totale
+    */         
+    protected function CkEditor($name,$width=300)
+    {
+	    if(self::$editor)
+        {  
+	        if(self::$editorOpt == 'minimal')
+	        {
+                $editor = '<script type="text/javascript">';
+                $editor = $editor."CKEDITOR.replace( '".$name."',{toolbar :[";
+                $editor = $editor."['Styles', 'Format'],['Font','FontSize'],['TextColor','BGColor'],['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', '-', 'About']]}); ";
+                $editor = $editor.'</script>';
+	        }
+            elseif(self::$editorOpt == 'full')
+            {
+                $editor = '<script type="text/javascript">';
+                $editor = $editor."CKEDITOR.replace( '".$name."',{toolbar :[";
+                $editor = $editor."['Source','-','Save','NewPage','Preview','-','Templates'],";
+                $editor = $editor."['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],";
+                $editor = $editor."['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat']";
+                $editor = $editor."['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],";
+                $editor = $editor."'/',";
+                $editor = $editor."['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],";
+                $editor = $editor."['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],";
+                $editor = $editor."['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],";
+                $editor = $editor."['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],";
+                $editor = $editor."['BidiLtr', 'BidiRtl'],";
+                $editor = $editor."['Link','Unlink','Anchor'],";
+                $editor = $editor."['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe'],";
+                $editor = $editor."'/',";
+                $editor = $editor."['Styles','Format','Font','FontSize'],";
+                $editor = $editor."['TextColor','BGColor'],";
+                $editor = $editor." ['Maximize', 'ShowBlocks','-','About']]})";
+                $editor = $editor.'</script>';
+             }
+             $this->Msg($editor);
+         }
+	}	
+    protected function NicEdit($name,$directory="../externes/nicedit/nicEditorIcons.gif",$option="")
+	{
+	    if(self::$editor)
+        {
+        	require_once("core/modules/view/plugins/nicedit.mrt"); 
+		}
+	}
 }
 ?>

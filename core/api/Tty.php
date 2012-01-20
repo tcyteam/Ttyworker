@@ -104,8 +104,8 @@ abstract class Tty extends Application
      protected $titre;
      public static $echo = array(); 
      protected $var;
-     public static $editor;
-     public static $editorOpt;
+
+
      public static $ACC;
      public static $mysqlStatut;
      public $textError;
@@ -882,55 +882,6 @@ abstract class Tty extends Application
           $location = strtolower(ReelDir().$location);
           header('Location: '.$location); 
        }
-       /**
-         * @access  protected
-         * @return autorise un module Ã  utiliser le l'editeur de texte compris dans l'api
-         */         
-       protected function AllowEditor($var=false,$option='minimal')
-       {
-	       self::$editorOpt = $option;
-	       return self::$editor = $var; 
-       } 
-       /**
-         * @access  protected
-         * @return affiche un editeur de texte diffÃ©rents selon que minimal, simple est Ã©tÃ© choisit sinon il affiche la totale
-         */         
-       protected function Editor($name,$width="")
-       {
-	      if(self::$editor)
-          {	  
-	          if(self::$editorOpt == 'minimal')
-	          {
-                  $editor = '<script type="text/javascript">';
-                  $editor = $editor."CKEDITOR.replace( '".$name."',{toolbar :[";
-                  $editor = $editor."['Styles', 'Format'],['Font','FontSize'],['TextColor','BGColor'],['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', '-', 'About']]}); ";
-                  $editor = $editor.'</script>';
-	          }
-              elseif(self::$editorOpt == 'full')
-              {
-                  $editor = '<script type="text/javascript">';
-                  $editor = $editor."CKEDITOR.replace( '".$name."',{toolbar :[";
-                  $editor = $editor."['Source','-','Save','NewPage','Preview','-','Templates'],";
-                  $editor = $editor."['Cut','Copy','Paste','PasteText','PasteFromWord','-','Print', 'SpellChecker', 'Scayt'],";
-                  $editor = $editor."['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat']";
-                  $editor = $editor."['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],";
-                  $editor = $editor."'/',";
-                  $editor = $editor."['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],";
-                  $editor = $editor."['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],";
-                  $editor = $editor."['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],";
-                  $editor = $editor."['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],";
-                  $editor = $editor."['BidiLtr', 'BidiRtl'],";
-                  $editor = $editor."['Link','Unlink','Anchor'],";
-                  $editor = $editor."['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe'],";
-                  $editor = $editor."'/',";
-                  $editor = $editor."['Styles','Format','Font','FontSize'],";
-                  $editor = $editor."['TextColor','BGColor'],";
-                  $editor = $editor." ['Maximize', 'ShowBlocks','-','About']]})";
-                  $editor = $editor.'</script>';
-              }
-         }
-         return $editor;
-	}
     /**
      * @access  protected
      * @return verifie si une chaine est de type alphaNumÃ©rique
