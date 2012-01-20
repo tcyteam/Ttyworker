@@ -30,7 +30,7 @@
        /* Helpers du core
 	   Dossier des helpers => Tty/Helper
        */ 
-       define('TEXTEDITOR','true');	
+       define('TEXTEDITOR','false');	
 	   /*Plugins du co
 	   Dossier des plugins => plugins
 	   */ 

@@ -280,12 +280,28 @@ abstract class Communicator implements News,Social,Video,Outil,Image
              $this->Msg($editor);
          }
 	}	
-    protected function NicEdit($name,$directory="../externes/nicedit/nicEditorIcons.gif",$option="")
+    protected function NicEdit($name,$option="",$optionList="'fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image'",$directory="../externes/nicedit/nicEditorIcons.gif")
 	{
 	    if(self::$editor)
         {
-        	require_once("core/modules/view/plugins/nicedit.mrt"); 
+        	if($option == "full")
+			{
+				$option=",fullPanel:true";
+			}
+			elseif($option == "list")
+			{
+				$option = ",buttonList : [".$optionList."]";
+			} 
+			new NicEditLoader($name,$option,$optionList,$directory);
 		}
+	}
+
+}
+class NicEditLoader
+{
+	public function NicEditLoader($name,$option,$optionList,$directory)
+	{
+		require("core/modules/view/plugins/nicedit.mrt");
 	}
 }
 ?>

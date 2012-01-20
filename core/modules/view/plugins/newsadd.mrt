@@ -1,13 +1,14 @@
 <div id="newsadd">
 <?php        
 $this->AllowEditor(true);        
-$this->NicEdit('contenu');
-$this->helper->Form('formulaire','newsadd');
-$this->helper->LineEdit('titre')->SetLabel('Titre : ');
-$this->helper->LineEdit('tag')->SetLabel('Tags : ');
-$this->helper->TextArea('contenu')->SetId('contenu');
-$this->helper->TextArea('contenu2')->SetId('contenu2');
-$this->helper->Submit('ajouter','Ajouter');
-$this->helper->Render();
+$this->NicEdit("contenu");
+$this->NicEdit("image","list","'image'");
+      $this->helper->Form('formulaire','newsadd');
+      $this->helper->LineEdit('titre')->SetLabel('Titre : ');
+      $this->helper->LineEdit('tag')->SetLabel('Tags : ');
+      $this->helper->TextArea('image')->SetId('image');
+      $this->helper->TextArea('contenu')->SetId('contenu');
+      $this->helper->Submit('ajouter','Ajouter');
+      $this->helper->Render();
 ?>
 </div>
