@@ -478,7 +478,7 @@ abstract class Tty extends Application
          */         
       protected static function DateLettre($date)
       {  
-         setlocale(LC_TIME, 'fr');
+         setlocale(LC_TIME, 'fr_FR');
          $date = Tty::dateToTimestamp($date);
          return ucfirst(strftime('%A %d %B %Y', $date));
       } 

@@ -65,19 +65,26 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	public function NewsAdd()
 	{
 		require_once("core/modules/view/plugins/newsadd.mrt");
+		if((isset($_POST['titre'])) AND (isset($_POST['contenu'])))
+		{
+			$this->AddNews($_POST['titre'],'administrator',htmlspecialchars($_POST['contenu']));
+		}
 	}	
 	public function AddNews($titre='',$auteur='',$area='',$table='article',$imgLink='',$vidLink='')
 	{
-		$date_creation = date("Y-m-d");
-		$heure_creation = date("H:i:s");
+		if((!empty($titre)) AND (!empty($area)))
+		{
+		    $date_creation = date("Y-m-d");
+		    $heure_creation = date("H:i:s");
 		
-		$date_mod = $date_creation;
-		$heure_mod = $heure_creation;
+		    $date_mod = $date_creation;
+		    $heure_mod = $heure_creation;
 		
 		
-        $value = "'".$titre."','".$auteur."','".$area."','".$date_creation."','".$heure_creation."','".$imgLink."','".$vidLink."','".$date_mod."','".$heure_mod."'";
-		$attr = '`titre`,`auteur`,`area`,`date_creation`,`heure_creation`,`vid_Link`,`img_Link`,`date_mod`,`heure_mod`';
-		$this->Add($attr,$value,$table);		
+            $value = "'".$titre."','".$auteur."','".$area."','".$date_creation."','".$heure_creation."','".$imgLink."','".$vidLink."','".$date_mod."','".$heure_mod."'";
+		    $attr = '`titre`,`auteur`,`area`,`date_creation`,`heure_creation`,`vid_Link`,`img_Link`,`date_mod`,`heure_mod`';
+		    $this->Add($attr,$value,$table);
+		}		
 	}
 	public function GetNews($attr='*',$close='',$table='')
 	{
@@ -185,6 +192,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 		
         $query = 'INSERT INTO `'.SGBD.'`.`'.$table.'` ('.$attr.') VALUES ('.$value.')';
 		$this->ComMess = $this->ComMess.'<br>'.$query;
+		echo $query;
         self::$communicator['pdo']->exec($query);
 	}
 	private function Del($close,$table='')
