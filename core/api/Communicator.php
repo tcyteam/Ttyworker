@@ -83,8 +83,17 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 		
             $value = "'".$titre."','".$auteur."','".$area."','".$date_creation."','".$heure_creation."','".$imgLink."','".$vidLink."','".$date_mod."','".$heure_mod."'";
 		    $attr = '`titre`,`auteur`,`area`,`date_creation`,`heure_creation`,`vid_Link`,`img_Link`,`date_mod`,`heure_mod`';
-		    $this->Add($attr,$value,$table);
+		    $re = $this->Add($attr,$value,$table);
+			if($re > 1)
+			{
+				header('Location: news');
+			}
 		}		
+	}
+	public function ViewsNewsList()
+	{
+		$this->GetNews('*','','article order by date_creation');
+		require_once("core/modules/view/plugins/viewnewslist.mrt");
 	}
 	public function GetNews($attr='*',$close='',$table='')
 	{
