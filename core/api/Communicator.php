@@ -90,7 +90,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 			}
 		}		
 	}
-	public function ViewsNewsList()
+	public function ViewNewsList()
 	{
 		$this->GetNews('*','','article order by date_creation');
 		require_once("core/modules/view/plugins/viewnewslist.mrt");
