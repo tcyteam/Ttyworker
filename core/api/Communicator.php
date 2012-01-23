@@ -192,14 +192,15 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 		
         $query = 'INSERT INTO `'.SGBD.'`.`'.$table.'` ('.$attr.') VALUES ('.$value.')';
 		$this->ComMess = $this->ComMess.'<br>'.$query;
-		echo $query;
-        self::$communicator['pdo']->exec($query);
+        $res = self::$communicator['pdo']->exec($query);
+		return $res;
 	}
 	private function Del($close,$table='')
 	{
         $query = 'DELETE FROM '.SGBD.'.'.$table.' WHERE '.$close;
 		$this->ComMess = $this->ComMess.'<br>'.$query;
-        self::$communicator['pdo']->exec($query);		
+        $res = self::$communicator['pdo']->exec($query);
+		return $res;		
 	}
 	private function Get($attr='*',$close='',$table='')
 	{
