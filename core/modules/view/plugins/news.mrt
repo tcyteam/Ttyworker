@@ -4,9 +4,11 @@
 			$exec =
 			'<div class="post">
 				<h2 class="title"><a href="#">'.ucfirst($news->titre).'</a></h2>
-				<p class="meta"><span class="date">le '.$this->DateFr($news->date_creation).' à '.$news->heure_creation.'</span><span class="posted">Posted by <a href="#">'.$news->auteur.'</a></span></p>
+				<p class="meta"><span class="date">'.$this->DateFr($news->date_creation).' at '.$news->heure_creation.'</span><span class="posted">Posted by <a href="#">'.$news->auteur.'</a></span></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
+				    <p>'.$news->img_link.'</p>
+				    <p>'.$news->vid_link.'</p>
 					<p>'.html_entity_decode($this->Tronquer($news->area)).'</p>
 					<p class="links"><a href="'.$this->ReelDir().'plugins/readnews/'.$news->id.'">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
 				</div>

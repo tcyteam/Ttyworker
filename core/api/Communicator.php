@@ -67,10 +67,10 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 		require_once("core/modules/view/plugins/newsadd.mrt");
 		if((isset($_POST['titre'])) AND (isset($_POST['contenu'])))
 		{
-			$this->AddNews($_POST['titre'],'administrator',htmlspecialchars($_POST['contenu']));
+			$this->AddNews($_POST['titre'],'administrator',htmlspecialchars($_POST['contenu']),'article',$_POST['image']);
 		}
 	}	
-	public function AddNews($titre='',$auteur='',$area='',$table='article',$imgLink='',$vidLink='')
+	public function AddNews($titre='',$auteur='',$area='',$table='article',$vidLink='',$imgLink='')
 	{
 		if((!empty($titre)) AND (!empty($area)))
 		{
