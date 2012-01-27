@@ -2,10 +2,10 @@
 <?php
 if(!empty(self::$communicator['news']))
 {
-        $this->Msg('<table><tr><th>Titre</th><th>Date</th><th>Posted by</th></tr>');	
+        $this->Msg('<table><tr><th>Titre</th><th>Date</th><th>Posted by</th><th>Actions</th></tr>');	
 		while($news = self::$communicator['news']->fetch(PDO::FETCH_OBJ))
         {
-            $this->Msg('<tr><td>'.$news->titre.'</tr><td>'.$news->date_creation.'</tr><td>'.$news->auteur.'</tr></td>');
+            $this->Msg('<tr><td><a href="">'.$this->Tronquer($news->titre,40).'</a><td><a href="">'.$news->date_creation.'</a><td><a href="">'.$news->auteur.'</a></td><td>Delete|Update</td></tr>');
 		}
 		$this->Msg('</table>');
 }

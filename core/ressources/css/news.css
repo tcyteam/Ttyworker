@@ -75,5 +75,19 @@
 }
 #viewnewslist table
 {
-	width:350px;
+	width:100%;
+	border:1px solid #E2E2E2;
+	background: #E2E2E2;
+}
+#viewnewslist td
+{
+	border:1px solid #E2E2E2;
+	background-color:white;
+	height:25px;
+}
+#viewnewslist th
+{
+	background-color:#E2E2E2;
+	border:1px solid #E2E2E2;
+	height:25px;
 }
