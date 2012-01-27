@@ -2,10 +2,16 @@
 <?php
 if(!empty(self::$communicator['news']))
 {
+	    $this->helper->Form('formulaire','viewnewslist');
         $this->Msg('<table><tr><th>Titre</th><th>Date</th><th>Posted by</th><th>Actions</th></tr>');	
 		while($news = self::$communicator['news']->fetch(PDO::FETCH_OBJ))
         {
-            $this->Msg('<tr><td><a href="">'.$this->Tronquer($news->titre,40).'</a><td><a href="">'.$news->date_creation.'</a><td><a href="">'.$news->auteur.'</a></td><td>Delete|Update</td></tr>');
+            $this->Msg('<tr><td><a href="">'.$this->Tronquer($news->titre,40).'</a><td><a href="">'.$news->date_creation.'</a><td><a href="">'.$news->auteur.'</a></td>');
+            $this->Msg('<td><a href="">Delete</a><td><a href="">Update</a></td><td><a href="">Read</a></td><td>');
+            $this->helper->CheckBox('act');
+			$this->helper->AddValue($news->id);
+            $this->helper->Render();
+			$this->Msg('</td></tr>');
 		}
 		$this->Msg('</table>');
 }
