@@ -1,10 +1,13 @@
 <?php
-//Module de connexion liÃ© au controller
+//Module de connexion lié au controller
 class AdnController extends AppController
 {
     protected $mess;
     protected $uid;
 	
+	/**
+	 * Mets certaines vues en public pour permettre à tout les monde d'y acceder
+	 */
     public function AdnController()
     {
         $this->droit['tryconnect'] = 'private';
@@ -19,9 +22,15 @@ class AdnController extends AppController
         $this->droit['insertsend'] = 'public';
 		$this->droit['alltest'] = 'public';
 		$this->droit['bugreport'] = 'public';
-        $this->droit['newpassword'] = $_SESSION['hash_new'];//permet de connaitre le hash pour valider le compte
+        $this->droit['newpassword'] = 'public';
         
     }
+	/**
+	 *  protected function Index()
+	 *
+	 * @return Verifie qu'on est connecté puis renvoie vers la page connect sinon il réafiche la vue index
+	 *  
+	 */
     protected function Index()
     {
         if($_SESSION['co'] == true)
@@ -33,8 +42,11 @@ class AdnController extends AppController
             $this->TryConnect();
         }
     }
-	/*
-	 * Verifie que le compte de l'utilisateur soit activé
+	/**
+	 * protected function CheckValid($mod='')
+	 *
+	 *@return Verifie que le compte de l'utilisateur soit activé
+	 * Si oui il renvoie vers la page connect si non il renvoie vers la vue waitvalid
 	 */
     protected function CheckValid($mod='')
     {
@@ -47,8 +59,11 @@ class AdnController extends AppController
            $this->Redirection(ReelDir().$mod.'waitvalid',4); 
         }
     }
-	/*
-	 * Ajoute une permission à la liste existante
+	/**
+	 * protected function AddDroit()
+	 *
+	 * @return Ajoute une permission à la liste existante
+	 * Et inscrit dans une base de donnée
 	 */
     protected function AddDroit()
     {
@@ -71,9 +86,11 @@ class AdnController extends AppController
             }
         }
     } 
-    /*
-	 *  protected function ViewGroup()
-	 *  permet de voir un groupe
+	/**
+	 * protected function ViewGroup()
+	 *
+	 * @return Affiche la liste des groupes
+	 * Et renvoie vers la page de modification du groupe
 	 */
     protected function ViewGroup()
     {
@@ -84,8 +101,10 @@ class AdnController extends AppController
              $this->Redirect(ReelDir()."adn/updategroup/".$_POST['group']);
         }
     }
-	/*
-	 * Met à jour les droits d'un groupe
+	/**
+	 * protected function UpdateGroup()
+	 *
+	 * @return Ajoute,modifie les droits d'un groupe donné
 	 */
     protected function UpdateGroup()
     {
@@ -117,6 +136,12 @@ class AdnController extends AppController
             }
         }
     }
+	/**
+	 * protected function UpdateMember()
+	 *
+	 * @return Affiche la liste des utilisateurs 
+	 * Et met à jour les informations rentrées en paramètres
+	 */
     protected function UpdateMember()
     {
         $group = new Group();
@@ -172,6 +197,11 @@ class AdnController extends AppController
 			echo '<div id="updatedialog">Updated successfully</div>';
         }
     }
+	/**
+	 * protected function AddGroup()
+	 *
+	 * @return Ajoute un groupe 
+	 */
     protected function AddGroup()
     {
         $id_name = htmlspecialchars($_POST['nom_group']);
@@ -187,6 +217,11 @@ class AdnController extends AppController
         }
         
     }
+	/**
+	 * protected function DelDroit()
+	 *
+	 * @return Retire un droit à un groupe donné
+	 */    
     protected function DelDroit()
     {
         if(isset($_POST['droit']))
@@ -196,6 +231,11 @@ class AdnController extends AppController
             $droit->DelDroit($perm);
         }
     }
+	/**
+	 * protected function TryConnect()
+	 *
+	 * @return Verifie le login et mot de passe de l'utilisateur
+	 */    
     private function TryConnect()
     {
         if((isset($_POST['connexion'])) && (($_POST['connexion'] == 'Connexion') OR ($_POST['connexion'] == 'Sign in')))
@@ -255,7 +295,12 @@ class AdnController extends AppController
         }
         $sqlu->closeCursor();
             
-    }  
+    }
+	/**
+	 * protected function Validation()
+	 *
+	 * @return Permet après un click d'activer un compte utilisateur
+	 */  
     protected function Validation()
     {
         if(!empty(self::$getRcv['id1']))
@@ -281,7 +326,11 @@ class AdnController extends AppController
             return true;
         }
     }
-    //to do verifier l'unicitÃ© de l'username''
+	/**
+	 * protected function Add()
+	 *
+	 * @return Ajoute un nouvel utilisateur dans la bdd
+	 */
     protected function Add()
     {
         if((isset($_POST['ajouter']) AND ($_POST['ajouter'] == 'Ajouter')))
@@ -326,6 +375,11 @@ class AdnController extends AppController
         }
         return self::$com['helper'];
     }
+	/**
+	 * protected function InsertSend()
+	 *
+	 * @return Ajoute un nouvel utilisateur dans la bdd
+	 */	
     public function InsertSend()
 	{
 		if(isset($_POST['ajouter']))
@@ -354,6 +408,11 @@ class AdnController extends AppController
             }            
         }
 	}
+	/**
+	 * protected function Disconnect()
+	 *
+	 * @return Detruit la session en cours et renvoie vers la page donnée
+	 */
     protected function Disconnect()
     {
         $_SESSION['co'] = false;
@@ -361,6 +420,11 @@ class AdnController extends AppController
 		$var = $_SESSION['lang'];
         $this->Redirection(ReelDir().'intro',4);
     }
+	/**
+	 * protected function BugReport()
+	 *
+	 * @return Envoie un email au devollopeur
+	 */	
 	protected function BugReport()
 	{
 		$lien = htmlentities($_POST['lien']);
@@ -374,15 +438,18 @@ class AdnController extends AppController
 		$helper = new Helper();
 		if(false !== filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{
-		    if($this->SendEmail('tcyteam@gmail.com','No-reply@tty.com',$mess,$lien,'BugReport Moto-trans-express'))
-		    {
-				$helper->TextBox("Message","Your bug has been reported");
-				$this->Redirection(ReelDir().'acceuil',12);
-		    }
-		    else
-		    {
-				$helper->TextBox("Message","can not send the message<br> Retry later");
-		    }
+			if(empty($_POST['envois']))
+			{
+		        if($this->SendEmail('tcyteam@gmail.com','No-reply@tty.com',$mess,$lien,'BugReport Moto-trans-express'))
+		        {
+				   $helper->TextBox("Message","Your bug has been reported");
+				   $this->Redirection(ReelDir().'acceuil',12);
+		        }
+		        else
+		        {
+				   $helper->TextBox("Message","can not send the message<br> Retry later");
+		        }
+			}
 		}
         else
 	    {
@@ -396,9 +463,15 @@ class AdnController extends AppController
 	{
 		
 	}
-	//informations sur les comptes et paramétrages
+	/**
+	 * protected function ViewMember()
+	 *
+	 * @return Affiche et permet de modifier les informations de l'utilisateur courant
+	 */
     protected function ViewMember()
     {
+        $info = new CommandeModel();
+        self::$com['commande'] = $info->ViewClient($_SESSION['user']->uid);
         self::$com['result'] = self::$com['model']->Modifiermember($_SESSION['user']->user); 
 		
         if(isset($_POST['update1']))
@@ -406,6 +479,8 @@ class AdnController extends AppController
 			if(sha1($_POST['oldpass']) == $_SESSION['user']->pass)
 			{
 			   self::$com['model']->UpdateMember("pass='".sha1($_POST['newpass'])."'","uid='".$_SESSION['user']->uid."'");
+			   $info = new CommandeModel();
+               self::$com['commande'] = $info->ViewClient($_SESSION['user']->uid);
                self::$com['result'] = self::$com['model']->Modifiermember($_SESSION['user']->user);
 			   echo '<div id="updatedialog">Updated successfully</div>';
 			}
@@ -414,6 +489,8 @@ class AdnController extends AppController
         {
         	self::$com['model']->UpdateMember("date_naissance='".$_POST['date_naissance']."',email='".$_POST['email']."', 
         	ville='".$_POST['ville']."',code_postal='".$_POST['code_postal']."',pays='".$_POST['pays']."'","uid='".$_SESSION['user']->uid."'");
+			$info = new CommandeModel();
+            self::$com['commande'] = $info->ViewClient($_SESSION['user']->uid);
             self::$com['result'] = self::$com['model']->Modifiermember($_SESSION['user']->user);
 			echo '<div id="updatedialog">Updated successfully</div>';
         }
@@ -440,6 +517,11 @@ class AdnController extends AppController
         }
 		
     }
+	/**
+	 * protected function ViewDroit()
+	 *
+	 * @return Permet de voir la liste de droits d'un groupe
+	 */    
     protected function ViewDroit()
     {
         $droit = new Group();
@@ -470,10 +552,18 @@ class AdnController extends AppController
             $result->closeCursor();
         }
     }
+	/**
+	 * protected function Connect()
+	 *
+	 * @return Page securisée pour les utilisateurs inscrits
+	 */	
     protected function Connect()
     {
         $user = $_SESSION['user']->user;
         $pass = $_SESSION['user']->pass;
+		
+        $info = new CommandeModel();
+        self::$com['commande'] = $info->ViewClient($_SESSION['user']->uid);
         $sql = self::$com['model']->TryConnect($user,$pass);
         //si tout correspond
         if($sql== 1)
@@ -492,6 +582,11 @@ class AdnController extends AppController
         } 
         $sql->closeCursor(); 
     }
+	/**
+	 * protected function NewPassword()
+	 *
+	 * @return Modifie le mot de passe courant après avoir entré l'ancien mot de passe
+	 */
     protected function NewPassword()
     {
         if(isset($_POST['update']))
@@ -503,8 +598,11 @@ class AdnController extends AppController
                     if(self::$com['model']->HashNewPassword(strtolower(self::$getRcv['id1']),strtolower(self::$getRcv['id2']),$_POST['newpass']))
                     {
                         self::$com['req'] = 'The password has been renewed';
-                        
-                        $this->TryConnectModel(strtolower(self::$getRcv['id2']),sha1($_POST['newpass']));
+                        header("Location: ".ReelDir()."adn");
+                    }
+                    else 
+                    {
+                    	self::$com['req'] = 'Problem occured in server side';
                     }
                 }
                 else
@@ -516,7 +614,7 @@ class AdnController extends AppController
     }
     protected function Test()
     {
-        
+
     }
 	protected function AllTest()
 	{
@@ -536,6 +634,11 @@ class AdnController extends AppController
     {
         
     }
+	/**
+	 * protected function LostPass()
+	 *
+	 * @return Envoie un lient par email qui permet de renouveler son mot de passe lorsqu'on a perdu celui-ci
+	 */	
     protected function LostPass()
     {
         if((isset($_POST['passrecup'])) AND ($_POST['passrecup'] == 'Recuperer'))
