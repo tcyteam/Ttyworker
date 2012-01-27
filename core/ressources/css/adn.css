@@ -292,20 +292,7 @@
    height:20px;
    width:100%;
    float:right;
-}
-
-
-
-.new_pass
-{
-    width:70%;
-    margin:auto;
-}    
-.new_pass input
-{
-    margin-left:10px;
-    margin-bottom:5px;
-}   
+}  
 .invalidInput, .error{  
         color:#8a1f11;  
         background-color:#fbe3e4;  
