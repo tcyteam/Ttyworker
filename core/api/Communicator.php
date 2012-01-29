@@ -90,15 +90,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 			}
 		}		
 	}
-	public function UpdateNews()
-	{
-		require_once("core/modules/view/plugins/newsupdate.mrt");
-		if((isset($_POST['titre'])) AND (isset($_POST['contenu'])))
-		{
-			$this->AddNews($_POST['titre'],'administrator',htmlspecialchars($_POST['contenu']),'article',$_POST['image']);
-		}
-	}
-	public function NewsUpdate($titre='',$auteur='',$area='',$table='',$imgLink='',$vidLink='',$id=0)
+	public function UpdateNews($titre='',$auteur='',$area='',$table='',$imgLink='',$vidLink='',$id=0)
 	{
 		if((!empty($titre)) AND (!empty($area)))
 		{
@@ -116,6 +108,14 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 			{
 				header('Location: news');
 			}
+		}		
+	}
+	public function NewsUpdate()
+	{
+		require_once("core/modules/view/plugins/newsupdate.mrt");
+		if((isset($_POST['titre'])) AND (isset($_POST['contenu'])))
+		{
+			$this->UpdateNews($_POST['titre'],'administrator',htmlspecialchars($_POST['contenu']),'article',$_POST['image'],$_GET['id1']);
 		}
 	}
 	public function ViewNewsList()
@@ -326,7 +326,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
              $this->Msg($editor);
          }
 	}	
-    protected function NicEdit($name,$option="",$optionList="'fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image'",$directory="../externes/nicedit/nicEditorIcons.gif")
+    protected function NicEdit($name,$option="",$optionList="'fontSize','bold','italic','underline','strikeThrough','subscript','superscript','html','image'",$directory="externes/nicedit/nicEditorIcons.gif")
 	{
 	    if(self::$editor)
         {
@@ -338,6 +338,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 			{
 				$option = ",buttonList : [".$optionList."]";
 			} 
+			$directory = $this->ReelDir().$directory;
 			new NicEditLoader($name,$option,$optionList,$directory);
 		}
 	}

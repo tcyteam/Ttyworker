@@ -4,7 +4,7 @@ Interface News
 	public function News();
 	public function ReadNews();
 	public function AddNews($titre='',$auteur='',$area='',$table='',$imgLink='',$vidLink='');
-	public function UpdatNews($titre='',$auteur='',$area='',$table='',$imgLink='',$vidLink='');
+	public function UpdateNews($titre='',$auteur='',$area='',$table='',$imgLink='',$vidLink='');
 	public function ViewNewsList();
 	public function NewsAdd();
 	public function GetNews($attr='*',$close='',$table='');
