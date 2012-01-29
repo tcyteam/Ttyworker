@@ -100,10 +100,10 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 		    $date_mod = $date_creation;
 		    $heure_mod = $heure_creation;
 		
-		    $attr = "titre='".$titre."',auteur='".$auteur."',area='".$area."',img_link='".$imgLink."',vid_link='".$vidLink."',date_mod='".$date_mod."',heure_mod='".$heure_mod."'";
-			$close = "WHERE id=".$id;
+		    $value = "titre='".$titre."',auteur='".$auteur."',area='".$area."',img_link='".$imgLink."',vid_link='".$vidLink."',date_mod='".$date_mod."',heure_mod='".$heure_mod."'";
+			$attr= "id=".$id;
 		    
-		    $re = $this->Set($attr,$close,$table);
+		    $re = $this->Set($attr,$value,$table);
 			if($re > 1)
 			{
 				header('Location: news');
@@ -112,10 +112,14 @@ abstract class Communicator implements News,Social,Video,Outil,Image
 	}
 	public function NewsUpdate()
 	{
+		$id = htmlentities($_GET['id1']);
+		$this->GetNews('*','id='.$id,'article');
 		require_once("core/modules/view/plugins/newsupdate.mrt");
+		
 		if((isset($_POST['titre'])) AND (isset($_POST['contenu'])))
 		{
-			$this->UpdateNews($_POST['titre'],'administrator',htmlspecialchars($_POST['contenu']),'article',$_POST['image'],$_GET['id1']);
+			$this->UpdateNews($_POST['titre'],'administrator',htmlspecialchars($_POST['contenu']),'article',$_POST['image'],$_POST['video'],$id);
+		    header('Location: '.$this->ReelDir().'plugins/newsupdate/'.$id);
 		}
 	}
 	public function ViewNewsList()
@@ -257,6 +261,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
             $attr = ' WHERE '.$attr;
         }
         $query = 'UPDATE '.SGBD.'.'.$table.' SET '.$close.$attr;
+		echo $query;
 		$this->ComMess = $this->ComMess.'<br>'.$query;
         $this->ComRes =  self::$communicator['pdo']->exec($query);
         return $this->ComRes; 		
