@@ -15,6 +15,16 @@ function CreatElem(parent,tp,type,name)
    TempData.setAttribute("name",name);
   divParent.appendChild(TempData);
 } 
+function limite(textarea,max)
+{
+	if(textarea.value.length >= max)
+	{
+		textarea.value = textarea.value.substring(0,max);
+	}
+	var reste = max - textarea.value.length;
+	var affichage_reste = reste + ' caractères restants';
+	document.getElementById('max_desc').innerHTML = affichage_reste;
+}
 /* Fonction chargement ajax avec animation, 
  * vous pouvez modifier la vitesse (slow, fast, 1500, ...) 
  * et l'effet (slideUp, fadeOut, ...) */
