@@ -23,7 +23,7 @@ class AdnController extends AppController
 		$this->droit['alltest'] = 'public';
 		$this->droit['bugreport'] = 'public';
         $this->droit['newpassword'] = 'public';
-        
+        $this->droit['loginreturn'] = 'public';
     }
 	/**
 	 *  protected function Index()
@@ -595,7 +595,7 @@ class AdnController extends AppController
             {
                 if($_POST['newpass'] == $_POST['conpass'])
                 {
-                    if(self::$com['model']->HashNewPassword(strtolower(self::$getRcv['id1']),strtolower(self::$getRcv['id2']),$_POST['newpass']))
+                    if(self::$com['model']->HashNewPassword(strtolower(self::$getRcv['id1']),htmlentities($_GET['id2']),$_POST['newpass']))
                     {
                         self::$com['req'] = 'The password has been renewed';
                         header("Location: ".ReelDir()."adn");
@@ -634,6 +634,26 @@ class AdnController extends AppController
     {
         
     }
+    protected function LoginReturn()
+    {
+    	if((isset($_POST['passrecup'])) AND ($_POST['passrecup'] == 'Recuperer'))
+    	{
+    		if(!empty($_POST['lostpass']))
+    		{
+    			if(filter_var($_POST['lostpass'], FILTER_VALIDATE_EMAIL))
+    			{
+    				$this->sql['result'] = self::$com['model']->LostPassCompare($_POST['lostpass']);
+                    $result = $this->sql['result']->fetch(PDO::FETCH_OBJ);
+                    $helper = new Helper();
+                    $bouton = 'www.moto-trans-express.be';
+                    $mess = $helper->MailTextBox('Votre login','Login : '.$result->user.'<br> Sachez que le serveur respecte la casse',$bouton,DOMAINE.'adn');
+                    $this->SendEmail($result->email,'Adn',$mess,'Votre login',TITRE);
+                    self::$com['req'] = 'An email was sent to your inbox';
+                    $this->Redirection(ReelDir().'adn',2500);
+    			}
+    		}
+    	}
+    }	
 	/**
 	 * protected function LostPass()
 	 *

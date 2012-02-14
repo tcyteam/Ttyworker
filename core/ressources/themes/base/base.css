@@ -20,7 +20,7 @@ body {
 }
 #canvas
 {
-	height:980px;
+	height:100%;
 	margin:auto;
 	position:absolute;
 	top:0px;

@@ -1,0 +1,23 @@
+<div id="newsadd">
+<?php   
+if(!empty(self::$communicator['news']))
+{    
+	while($news = self::$communicator['news']->fetch(PDO::FETCH_OBJ))
+    {
+        $this->AllowEditor(true);        
+        $this->NicEdit("contenu");
+        $this->NicEdit("image","list","'image'");
+               $this->helper->Form('formulaire',$news->id);
+               $this->helper->LineEdit('titre')->SetLabel('Titre : ');
+               $this->helper->SetText($news->titre);
+               $this->helper->LineEdit('tag')->SetLabel('Tags : ');
+               $this->helper->TextArea('image')->SetId('image');
+			   $this->helper->SetText($news->img_link);
+               $this->helper->TextArea('contenu')->SetId('contenu');
+			   $this->helper->SetText($news->area);
+               $this->helper->Submit('ajouter','Modifier');
+               $this->helper->Render();
+	}
+}
+?>
+</div>

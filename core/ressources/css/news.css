@@ -32,10 +32,12 @@
 
 .post .meta .date {
 	float: left;
+	margin-top:15px;
 }
 
 .post .meta .posted {
 	float: right;
+	margin-top:15px;
 }
 
 .post .meta a {

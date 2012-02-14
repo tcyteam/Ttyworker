@@ -1,0 +1,12 @@
+<div id="lostpassword">
+<?php
+$this->helper->Form('recup_pass');
+$this->helper->ErrorDisplay('<div id="lostpasstitre"><h3>Identifiez votre compte</h3></div>');
+$this->helper->ErrorDisplay('<div id="lostpasscorp">Saisissez votre adresse électronique');
+$this->helper->LineEdit('lostpass');
+$this->helper->ErrorDisplay('</div><div id="lostpassbottom">'.self::$com['req'].'<br>');
+$this->helper->Submit('passrecup','Recuperer');
+$this->helper->ErrorDisplay('</div>');
+$this->helper->Render();
+?>
+</div>
