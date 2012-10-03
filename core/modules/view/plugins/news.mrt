@@ -10,9 +10,9 @@ if(!empty(self::$communicator['news']))
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
 				    '.$news->img_link.'
-				    '.$news->vid_link.'
-					'.html_entity_decode($this->Tronquer($news->area)).'
-					<p class="links"><a href="'.$this->ReelDir().'plugins/readnews/'.$news->id.'">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
+				    '.$news->vid_link.'<br />
+					'.html_entity_decode($this->Tronquer($news->area)).'<br />
+					<p class="links"><a href="'.$this->ReelDir().'plugins/readnews/'.$news->id.'"><br />Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
 				</div>
 			</div>';  
 			$this->Msg($exec);

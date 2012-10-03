@@ -232,6 +232,7 @@ abstract class Communicator implements News,Social,Video,Outil,Image
         }
 		
         $query = 'INSERT INTO `'.SGBD.'`.`'.$table.'` ('.$attr.') VALUES ('.$value.')';
+		echo $query;
 		$this->ComMess = $this->ComMess.'<br>'.$query;
         $res = self::$communicator['pdo']->exec($query);
 		return $res;
